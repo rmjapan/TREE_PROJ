@@ -1,0 +1,13 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 437, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 308, in main
+    iou_loss=voxel_miou(recon_x,x)
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 154, in voxel_miou
+    if total_pred_non_empty == 0 and total_target_non_empty == 0:
+KeyboardInterrupt
