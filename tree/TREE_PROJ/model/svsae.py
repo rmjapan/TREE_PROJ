@@ -19,9 +19,6 @@ from safetensors.torch import load_file, save_file
 from typing import Callable, Optional, Union
 from copy import deepcopy
 from diffusers.utils import CONFIG_NAME, SAFETENSORS_WEIGHTS_NAME, WEIGHTS_NAME
-
-
-# ... existing imports ...
 from torch.nn import AdaptiveAvgPool3d
 
 class SEBlock(nn.Module):

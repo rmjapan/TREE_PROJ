@@ -28,6 +28,7 @@ from save_file import save_npzForm
 
 from graph2Voxel import create_voxel_data
 from filecount import last_file_num
+from visualize_func import visualize_voxel_data
 
 
 class Edge():
@@ -284,126 +285,6 @@ def plot_graph(DG):
     plt.gca().set_aspect('equal', adjustable='box')
     
     plt.show()
-# def AABB(edge,DG):
-#     start_node = DG.nodes[edge[0]]['node']
-#     end_node = DG.nodes[edge[1]]['node']
-#     start_pos = np.array([start_node.pos.x, start_node.pos.y, start_node.pos.z])
-#     end_pos = np.array([end_node.pos.x, end_node.pos.y, end_node.pos.z])
-#     thickness = DG.edges[edge]['edge'].thickness
-#     margin=0
-    
-#     x_min = min(start_pos[0], end_pos[0])
-#     x_max = max(start_pos[0], end_pos[0])
-#     y_min = min(start_pos[1], end_pos[1])
-#     y_max = max(start_pos[1], end_pos[1])
-#     z_min = min(start_pos[2], end_pos[2])
-#     z_max = max(start_pos[2], end_pos[2])
-
-
-    
-    
-#     X_min=x_min-thickness/2-margin
-#     X_max=x_max+thickness/2+margin
-#     Y_min=y_min-thickness/2-margin
-#     Y_max=y_max+thickness/2+margin
-#     Z_min=z_min-thickness/2-margin
-#     Z_max=z_max+thickness/2+margin
-#     return X_min,X_max,Y_min,Y_max,Z_min,Z_max
-    
-    
-# def create_voxel_data(DG, H=32, W=32, D=32):
-#     # ボクセルデータを初期化
-#     voxel_data = np.full((H, W, D), 0, dtype=float)
-    
-#     # ノードの座標の最小値と最大値を取得
-#     x_vals = [DG.nodes[node]['node'].pos.x for node in DG.nodes()]
-#     y_vals = [DG.nodes[node]['node'].pos.y for node in DG.nodes()]
-#     z_vals = [DG.nodes[node]['node'].pos.z for node in DG.nodes()]
-    
-#     x_min, x_max = min(x_vals), max(x_vals)
-#     y_min, y_max = min(y_vals), max(y_vals)
-#     z_min, z_max = min(z_vals), max(z_vals)
-    
-#     # 配列の中心を計算
-#     x_center = (x_max + x_min) / 2
-#     y_center = (y_max + y_min) / 2
-#     z_center = (z_max + z_min) / 2
-    
-#     # ボクセルスケールとサイズを計算
-#     max_length = max(x_max - x_min, y_max - y_min, z_max - z_min)
-#     margin = 5  # 余裕を持たせる
-#     voxel_scale = max_length + margin
-#     voxel_size = voxel_scale / H
-#     voxel_xmin = x_center - voxel_scale / 2
-#     voxel_ymin = y_center - voxel_scale / 2
-#     voxel_zmin = z_center - voxel_scale / 2
-    
-#     # 座標軸の値を計算
-#     x_coords = voxel_xmin + np.arange(H) * voxel_size
-#     y_coords = voxel_ymin + np.arange(W) * voxel_size
-#     z_coords = voxel_zmin + np.arange(D) * voxel_size
-    
-#     # メッシュグリッドを作成
-#     X, Y, Z = np.meshgrid(x_coords, y_coords, z_coords, indexing='ij')
-#     #これで、ijkでアクセスできるようになる
-#     voxel_positions = np.stack((X, Y, Z), axis=-1)
-    
-    
-#     for edge in DG.edges():
-#         X_min,X_max,Y_min,Y_max,Z_min,Z_max=AABB(edge,DG)
-#         i_min = np.searchsorted(x_coords, X_min, side='left')
-#         i_max = np.searchsorted(x_coords, X_max, side='right') - 1
-#         j_min = np.searchsorted(y_coords, Y_min, side='left')
-#         j_max = np.searchsorted(y_coords, Y_max, side='right') - 1
-#         k_min = np.searchsorted(z_coords, Z_min, side='left')
-#         k_max = np.searchsorted(z_coords, Z_max, side='right') - 1
-
-        
-        
-#         start_node = DG.nodes[edge[0]]['node']
-#         end_node = DG.nodes[edge[1]]['node']
-#         thickness = DG.edges[edge]['edge'].thickness
-#         pos_array=voxel_positions[i_min:i_max+1, j_min:j_max+1, k_min:k_max+1, :]
-#         start_pos=np.array([DG.nodes[edge[0]]['node'].pos.x, DG.nodes[edge[0]]['node'].pos.y, DG.nodes[edge[0]]['node'].pos.z])
-#         end_pos=np.array([DG.nodes[edge[1]]['node'].pos.x, DG.nodes[edge[1]]['node'].pos.y, DG.nodes[edge[1]]['node'].pos.z])
-#         edge_vector=end_pos-start_pos
-#         edge_norm_square=np.dot(edge_vector,edge_vector)
-#         start_to_pos=pos_array-start_pos
-#         # proj_lengthを配列全体で計算
-#         # (start_to_pos ⋅ edge_vector) / (edge_vector ⋅ edge_vector)
-#         proj_length = np.einsum('ijkl,l->ijk', start_to_pos, edge_vector) / edge_norm_square  # shapeは[Ni, Nj, Nk]
-#         # proj_pointの計算(Ni, Nj, Nk, 3)
-#         proj_point = start_pos + proj_length[..., np.newaxis] * edge_vector  # shapeは[Ni, Nj, Nk, 3]
-#         # proj_vectorの計算(Ni, Nj, Nk, 3)
-#         # distance計算
-#         diff = pos_array - proj_point
-#         distance = np.linalg.norm(diff, axis=-1)  # shapeは[Ni, Nj, Nk]
-
-#         # エッジ範囲内チェック（within_edge）もブロードキャストでできる
-#         min_pos = np.minimum(start_pos, end_pos)
-#         max_pos = np.maximum(start_pos, end_pos)
-#         within_edge = np.all((proj_point >= min_pos-voxel_size) & (proj_point <= max_pos+voxel_size), axis=-1)  # shapeは[Ni, Nj, Nk]
-#         #within_edge = True
-#         # thickness判定
-#         mask = within_edge & (distance <= thickness / 2)
-        
-
-#         # 属性に応じた値の割り当て
-#         # maskを使ってvoxel_dataサブ領域に直接代入できる
-#         # start_node.attr, end_node.attrで条件分岐し、マスクを用いて一括代入する
-#         value = 0.5
-#         if start_node.attr == 1 and end_node.attr == 1:
-#             value = 1
-#         elif start_node.attr == 0.5 and end_node.attr == 0:
-#             value = 0
-#         voxel_data[i_min:i_max+1, j_min:j_max+1, k_min:k_max+1][mask] = value
-        
-
-
-        
-
-#     return voxel_data
-        
 
 
 # 凸包と枝をMixして描画する関数
@@ -447,56 +328,7 @@ def mix_branches_and_leaves(plotter, DG, clusterd_leaf_points, num_cluster):
             plotter.add_mesh(line, color="#a65628", line_width=cm_to_pt(thickness))
 
 
-# def convex_hull_leaf(DG,clusterd_leaf_points,num_cluster):
-#     figure = plt.figure(figsize=(10, 10))
-#     ax=figure.add_subplot(111, projection='3d')
-#     colors = cm.rainbow(np.linspace(0, 1, num_cluster))
-    
-#     #緑色で葉を描画
-
-#     for i in range(num_cluster):
-#         leaf_points=clusterd_leaf_points[i]
-#         leaf_points=np.array(leaf_points)
-#         leaf_hull = ConvexHull(leaf_points)
-#         #凸包を塗りつぶし
-#         faces = []
-#         for simplex in leaf_hull.simplices:
-#             simplex = np.append(simplex, simplex[0])
-#             faces.append(leaf_points[simplex])
-#         poly = Poly3DCollection(faces)
-#         # poly.set_alpha(0.8)
-#         poly.set_color('green')
-#         ax.add_collection3d(poly)
-#     node_positions = {node: (DG.nodes[node]['node'].pos.x, 
-#                              DG.nodes[node]['node'].pos.y, 
-#                              DG.nodes[node]['node'].pos.z) 
-#                       for node in DG.nodes}
-    
-#     attr_positions = {node: DG.nodes[node]['node'].attr
-#                       for node in DG.nodes}
-#     edge_thickness = {(u, v): DG[u][v]['edge'].thickness
-#                       for u, v in DG.edges()}
-#     for (u, v) in DG.edges():
-#         x = [node_positions[u][0], node_positions[v][0]]
-#         y = [node_positions[u][1], node_positions[v][1]]
-#         z = [node_positions[u][2], node_positions[v][2]]
-#         thickness = edge_thickness[(u, v)]
-#         thickness = cm_to_pt(thickness)
-#         if attr_positions[u] == 1 and attr_positions[v] == 1:
-#             ax.plot(x, y, z, c="#a65628", linewidth=thickness)
-#         # elif attr_positions[u] == 0.5 and attr_positions[v] == 0:
-#         #     ax.plot(x, y, z, c="green", linewidth=thickness)
-#         # else:
-#         #     ax.plot(x, y, z, c='#a65628', linewidth=thickness)
-#     # for edge in DG.edges():
-#     #     #numpy配列に変換
-#     #     start_pos=np.array([DG.nodes[edge[0]]['node'].pos.x,DG.nodes[edge[0]]['node'].pos.y,DG.nodes[edge[0]]['node'].pos.z])
-#     #     end_pos=np.array([DG.nodes[edge[1]]['node'].pos.x,DG.nodes[edge[1]]['node'].pos.y,DG.nodes[edge[1]]['node'].pos.z])
-#     #     #幹の描画
-#     #     ax.plot([start_pos[0],end_pos[0]],[start_pos[1],end_pos[1]],[start_pos[2],end_pos[2]],c="black")
-#     plt.show()
-        
-        
+#
 def convex_hull_leaf_and_branch(DG):
 
     leaf_points=[]
@@ -665,43 +497,7 @@ def leaf_cluster(DG):
     return clustred_leaf_points,point_cloud_2d_after_clustering,labels_3d
 
     
-def visualize_voxel_data(voxel_data):
-    import plotly.graph_objects as go
-    # ボクセルが存在する位置を判定
-    filled_positions = np.argwhere(voxel_data != -1)
-    x, y, z = filled_positions.T
-    print(len(filled_positions))
 
-    # 空ではないボクセルの色を設定
-    colors = []
-    for pos in filled_positions:
-        value = voxel_data[tuple(pos)]
-        if value == 1:
-            colors.append('brown')
-        elif value == 0.5:
-            colors.append('yellow')
-        elif value == 0:
-            colors.append('green')
-
-    fig = go.Figure(data=go.Scatter3d(
-        x=x,
-        y=y,
-        z=z,
-        mode='markers',
-        marker=dict(
-            size=2,
-            color=colors,
-            opacity=0.8
-        )
-    ))
-    fig.update_layout(scene=dict(
-        xaxis_title='X',
-        yaxis_title='Y',
-        zaxis_title='Z',
-        aspectmode='data'
-    ))
-    fig.show()
-    
 
 def make_davinch_tree(DG, Edge):
     start_node = Edge[0]

@@ -25,6 +25,7 @@ from svs import visualize_voxel_data
 from save_train_result import save_train_result
 from multiprocessing import Process
 import time
+from my_dataset.svsdataset import SvsDataset
 def chamfer_distance(p1, p2, 
                     voxel_size=1.0,
                     max_points_per_part=2000,
@@ -188,25 +189,7 @@ def voxel_miou(pred_continuous, target_discrete):
     
     # 損失として返す (1 - mIoU)
     return 1.0 - weighted_miou
-class SvsDataset(Dataset):
-    def __init__(self,data_dir,transform=None):
-        self.data_dir=data_dir
-        self.transform=transform
-    def __len__(self):
-        return len(os.listdir(self.data_dir))
-    def __getitem__(self,idx):
-        svs=np.load(self.data_dir+f"/svs_{idx+1}.npz")
-        # print(f"svs_{idx+1}.npzを読み込みました")
-        svs=npz2dense(svs)
-        svs[svs==0]=-1.0
-        svs[svs==1]=0.0
-        svs[svs==1.5]=0.5
-        svs[svs==2]=1.0
-        
-        svs=torch.tensor(svs).float()
-        svs=torch.unsqueeze(svs,0)
-        return svs
-    
+
 
 def wandb_setup():
     wandb.login()
