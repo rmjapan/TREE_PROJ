@@ -9,6 +9,7 @@ import os
 import re
 from regex import F
 from torch import fill
+from estimate_thickness import make_davinch_tree
 
 
 os.environ["OMP_NUM_THREADS"] = "2"
@@ -499,45 +500,6 @@ def leaf_cluster(DG):
     
 
 
-def make_davinch_tree(DG, Edge):
-    start_node = Edge[0]
-    end_node = Edge[1]
-    thickness = 0
-
-    # 同じ太さのエッジリスト
-    same_thickness_edge_list = [Edge]
-
-    while True:
-        # 次のノードの出るエッジを取得
-        adjacent_edge_list = list(DG.out_edges(end_node))
-
-        if len(adjacent_edge_list) == 0:  # 葉に到達
-            thickness += 0.2
-            for same_edge in same_thickness_edge_list:
-                DG.edges[same_edge]["edge"].thickness = thickness
-                #辺の属性もここで一緒に
-                start_node = same_edge[0]
-                
-                if DG.nodes[start_node]["node"].attr==1 and DG.nodes[end_node]["node"].attr==1:
-                    edge=DG.edges[same_edge]["edge"].attr=1
-                else:
-                    edge=DG.edges[same_edge]["edge"].attr=0.5
-            thickness=thickness*0.55
-            return thickness
-
-        if len(adjacent_edge_list) > 1:  # 分岐がある場合
-            for edge in adjacent_edge_list:
-                thickness += make_davinch_tree(DG, edge)
-            for same_edge in same_thickness_edge_list:
-                DG.edges[same_edge]["edge"].thickness = thickness
-                #辺の属性もここで一緒に
-            thickness=thickness*0.7
-            return thickness
-
-        elif len(adjacent_edge_list) == 1:  # 次のエッジが1つの場合
-            same_thickness_edge_list.append(adjacent_edge_list[0])
-            end_node = adjacent_edge_list[0][1]
-
 def plot_graph_and_strmatrix(DG):
     #nodeが持つ座標系（strmatrix）を使って、座標点＋座標軸を描画する
     # Extract node positions
@@ -664,20 +626,7 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
         index+=1
     return index
 
-# def last_file_num(path):
-#     filelist=os.listdir(path)
-#     max_num=0
-#     if len(filelist)==0:
-#         return 0
-#     else:
-#         pattern=f"\\_(\\d+)\\."
-#         for file in filelist:
-#             print(f"file: {file}")
-#             numbers = re.findall(pattern, file)
-#             num=int(numbers[0])
-#             if num>max_num:
-#                 max_num=num
-#         return max_num+1
+
 
 import os
 from typing import List, Tuple
@@ -685,13 +634,7 @@ import numpy as np
 import networkx as nx
 import pyvista as pv
 
-# ※ 以下の関数・クラスは既存の実装を前提としています
-# from some_module import (
-#     last_file_num, make_svs, make_davinch_tree, leaf_cluster,
-#     mix_branches_and_leaves, create_voxel_data, save_npzForm,
-#     visualize_voxel_data, plot_trunk_and_mainskelton_graph, plot_graph,
-#     Pos, Node
-# )
+
 
 def initialize_tree() -> Tuple[nx.DiGraph, np.ndarray]:
     """
