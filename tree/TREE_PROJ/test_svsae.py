@@ -121,13 +121,6 @@ def test_svsae(numdata=0,random_index=True):
         print(output_voxel.shape)
 
 
-    
-        #前処理(離散値への変換)
-        # latent_voxel=svs_change_value(latent_voxel)
-        # voxel_distribution(latent_voxel[0].cpu().detach().numpy().squeeze())
-        # output_voxel=svs_change_value(output_voxel)
-        # voxel_distribution(output_voxel[0].cpu().detach().numpy().squeeze())
-
 
         # 入力、潜在表現、出力の可視化と保存
         base_dir = r"/home/ryuichi/tree/TREE_PROJ/data_dir/visualize"
