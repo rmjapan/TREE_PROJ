@@ -2,7 +2,8 @@ import sys
 
 from sklearn.model_selection import learning_curve
 import wandb
-
+import os 
+import sys
 sys.path.append("/home/ryuichi/tree/TREE_PROJ")
 from model.svsae import SVSAE
 from utils import npz2dense, dense2sparse,weighted_mse_loss
@@ -241,7 +242,9 @@ def main():
     test_train_flag=False
     use_pretained_model=True
     model_path=r"/home/ryuichi/tree/TREE_PROJ/data_dir/model2025-02-25/model_0.pth"
-    
+    model_path=r"/home/ryuichi/tree/TREE_PROJ/data_dir/model2025-03-18/model_0.pth"#2epoch(MAE)
+    model_path=r"/home/ryuichi/tree/TREE_PROJ/data_dir/model2025-03-19/model_0.pth"#1epoch(MAE)+new_model
+    model_path=r"/home/ryuichi/tree/TREE_PROJ/data_dir/model2025-03-20/model_0.pth"#2epoch(MAE)+new_model
     # Initialize wandb
     wandb_setup()
     
@@ -277,7 +280,7 @@ def main():
     print(f"データセットのサイズ: {len(Svsdataset)}")
     for epoch in range(epochs):
         loss_sum = 0.0
-        mse_loss_sum = 0.0
+        mae_loss_sum = 0.0
         iou_loss_sum = 0.0
         chamfer_loss_sum = 0.0
         cnt = 0
@@ -286,12 +289,13 @@ def main():
         for x in Svsdataloader:
             x = x.to(device)
             recon_x=model(x)
-            
-            mse_loss=torch.nn.functional.mse_loss(recon_x,x)
+            L1_Loss=torch.nn.L1Loss()
+            mae_loss=L1_Loss(recon_x,x)
             iou_loss=voxel_miou(recon_x,x)
             chamfer_loss=chamfer_distance(recon_x,x)
-            loss=mse_loss+0.5*iou_loss+0.5*chamfer_loss
-            
+            loss=mae_loss+0.5*iou_loss+0.5*chamfer_loss
+            # loss=iou_loss
+            print(f"loss:{loss.item()}")
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -299,33 +303,33 @@ def main():
             # Log metrics to wandb
             wandb.log({
                 "batch_loss": loss.item(),
-                "batch_mse_loss": mse_loss.item(),
+                "batch_mae_loss": mae_loss.item(),
                 "batch_iou_loss": iou_loss.item(),
                 "batch_chamfer_loss": chamfer_loss.item(),
                 "epoch": epoch
             })
 
             loss_sum += loss.item()
-            mse_loss_sum += mse_loss.item()
+            mae_loss_sum += mae_loss.item()
             iou_loss_sum += iou_loss.item()
             chamfer_loss_sum += chamfer_loss
             
             if (cnt+1) %100 == 0:
                 avg_loss = loss_sum/(cnt+1)
-                avg_mse = mse_loss_sum/(cnt+1)
+                avg_mae = mae_loss_sum/(cnt+1)
                 avg_iou = iou_loss_sum/(cnt+1)
                 avg_chamfer = chamfer_loss_sum/(cnt+1)
                 
                 print(f"\n=== Loss Metrics (avg last 100 steps) ===")
                 print(f"Total Loss:      {avg_loss:.3f}")
-                print(f"MSE Loss:        {avg_mse:.3f}")
+                print(f"MAE Loss:        {avg_mae:.3f}")
                 print(f"IoU Loss:        {avg_iou:.3f}") 
                 print(f"Chamfer Loss:    {avg_chamfer:.3f}\n")
                 
                 # Log average metrics to wandb
                 wandb.log({
                     "avg_loss_100": avg_loss,
-                    "avg_mse_loss_100": avg_mse,
+                    "avg_mae_loss_100": avg_mae,
                     "avg_iou_loss_100": avg_iou,
                     "avg_chamfer_loss_100": avg_chamfer,
                     "epoch": epoch
@@ -367,7 +371,7 @@ def main():
                 p1.terminate()
                 p2.terminate()
                 loss_sum =0
-                mse_loss_sum =0
+                mae_loss_sum =0
                 iou_loss_sum =0
                 chamfer_loss_sum =0
                 cnt=0

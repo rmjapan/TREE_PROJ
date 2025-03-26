@@ -2,9 +2,23 @@ import numpy as np
 import pyvista as pv
 import os
 from pathlib import Path
+import time
+from multiprocessing import Process
            
 # PyVistaのバックエンドを設定
 pv.start_xvfb()
+def visualize_with_timeout(data, timeout=10):
+    """指定されたデータを可視化し、タイムアウト後にプロセスを終了する関数"""
+    process = Process(target=visualize_voxel_data_4_modelnet, args=(data,))
+    process.start()
+    
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        if not process.is_alive():
+            break
+        time.sleep(0.1)
+    
+    process.terminate()
 
 def visualize_voxel_data(voxel_data):
     import plotly.graph_objects as go
@@ -43,7 +57,41 @@ def visualize_voxel_data(voxel_data):
     ))
     fig.show()
 
+def visualize_voxel_data_4_modelnet(voxel_data):
+    import plotly.graph_objects as go
+    # ボクセルが存在する位置を判定
+    filled_positions = np.argwhere(voxel_data != -1)
+    x, y, z = filled_positions.T
+    print(len(filled_positions))
 
+    # 空ではないボクセルの色を設定
+    colors = []
+    for pos in filled_positions:
+        value = voxel_data[tuple(pos)]
+        if value != 0:
+            colors.append('brown')
+        elif value == 0:
+            #空の場合は透明にする
+            colors.append('rgba(0,0,0,0)')
+
+    fig = go.Figure(data=go.Scatter3d(
+        x=x,
+        y=y,
+        z=z,
+        mode='markers',
+        marker=dict(
+            size=2,
+            color=colors,
+            opacity=0.8
+        )
+    ))
+    fig.update_layout(scene=dict(
+        xaxis_title='X',
+        yaxis_title='Y',
+        zaxis_title='Z',
+        aspectmode='data'
+    ))
+    fig.show()
 
 def visualize_and_save_volume(volume_data, filename, cmap="viridis"):
             """

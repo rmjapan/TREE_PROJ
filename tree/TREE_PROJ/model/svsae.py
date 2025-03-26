@@ -172,7 +172,13 @@ class SVSDecoder(torch.nn.Module):
         # 対称的なデコーダ構造
         self.blocks = nn.Sequential(
             nn.Sequential(
-                ConvTranspose3d(1, 16, kernel_size=1, stride=1),
+                ConvTranspose3d(1, 32, kernel_size=1, stride=1),
+                DecoderSEResNetBlock(32, 32),
+                nn.BatchNorm3d(32),
+                LeakyReLU()
+            ),
+            nn.Sequential(
+                ConvTranspose3d(32, 16, kernel_size=3, stride=1, padding=1),
                 DecoderSEResNetBlock(16, 16),
                 nn.BatchNorm3d(16),
                 LeakyReLU()

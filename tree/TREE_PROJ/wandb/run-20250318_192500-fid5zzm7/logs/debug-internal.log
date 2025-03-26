@@ -1,0 +1,15 @@
+{"time":"2025-03-18T19:25:00.306225876+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/home/ryuichi/tree/TREE_PROJ/wandb/run-20250318_192500-fid5zzm7/logs/debug-core.log"}
+{"time":"2025-03-18T19:25:00.42057833+09:00","level":"INFO","msg":"created new stream","id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:00.420685552+09:00","level":"INFO","msg":"stream: started","id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:00.420751241+09:00","level":"INFO","msg":"sender: started","stream_id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:00.420745211+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:00.420831296+09:00","level":"INFO","msg":"handler: started","stream_id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:00.748774168+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T19:25:09.282615962+09:00","level":"INFO","msg":"stream: closing","id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:09.28267527+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T19:25:09.283825403+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T19:25:10.237162833+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-18T19:25:10.448657066+09:00","level":"INFO","msg":"handler: closed","stream_id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:10.448740516+09:00","level":"INFO","msg":"sender: closed","stream_id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:10.44873793+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"fid5zzm7"}
+{"time":"2025-03-18T19:25:10.448922872+09:00","level":"INFO","msg":"stream: closed","id":"fid5zzm7"}

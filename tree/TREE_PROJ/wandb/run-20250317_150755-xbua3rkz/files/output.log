@@ -1,0 +1,17 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 420, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 290, in main
+    mae_loss=torch.nn.L1Loss(recon_x,x)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 125, in __init__
+    super().__init__(size_average, reduce, reduction)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 44, in __init__
+    self.reduction: str = _Reduction.legacy_get_string(size_average, reduce)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/_reduction.py", line 44, in legacy_get_string
+    if size_average and reduce:
+RuntimeError: Boolean value of Tensor with more than one value is ambiguous

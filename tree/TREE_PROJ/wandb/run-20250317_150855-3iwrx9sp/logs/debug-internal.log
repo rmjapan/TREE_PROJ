@@ -1,0 +1,15 @@
+{"time":"2025-03-17T15:08:55.468370682+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/home/ryuichi/tree/TREE_PROJ/wandb/run-20250317_150855-3iwrx9sp/logs/debug-core.log"}
+{"time":"2025-03-17T15:08:55.582106747+09:00","level":"INFO","msg":"created new stream","id":"3iwrx9sp"}
+{"time":"2025-03-17T15:08:55.582173912+09:00","level":"INFO","msg":"stream: started","id":"3iwrx9sp"}
+{"time":"2025-03-17T15:08:55.582211873+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"3iwrx9sp"}
+{"time":"2025-03-17T15:08:55.582263048+09:00","level":"INFO","msg":"sender: started","stream_id":"3iwrx9sp"}
+{"time":"2025-03-17T15:08:55.582233088+09:00","level":"INFO","msg":"handler: started","stream_id":"3iwrx9sp"}
+{"time":"2025-03-17T15:08:55.905487912+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-17T17:16:50.796483293+09:00","level":"INFO","msg":"stream: closing","id":"3iwrx9sp"}
+{"time":"2025-03-17T17:16:50.796525573+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-17T17:16:50.797335315+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-17T17:16:51.921914438+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-17T17:16:52.144022468+09:00","level":"INFO","msg":"handler: closed","stream_id":"3iwrx9sp"}
+{"time":"2025-03-17T17:16:52.144096467+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"3iwrx9sp"}
+{"time":"2025-03-17T17:16:52.144122047+09:00","level":"INFO","msg":"sender: closed","stream_id":"3iwrx9sp"}
+{"time":"2025-03-17T17:16:52.144299075+09:00","level":"INFO","msg":"stream: closed","id":"3iwrx9sp"}
