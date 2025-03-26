@@ -1,0 +1,47 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 420, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 288, in main
+    recon_x=model(x)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/tree/TREE_PROJ/model/svsae.py", line 226, in forward
+    x=self.decoder(x)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/tree/TREE_PROJ/model/svsae.py", line 206, in forward
+    return self.blocks(x)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/tree/TREE_PROJ/model/svsae.py", line 89, in forward
+    x = self.relu(self.bn1(self.conv1(x)))
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 1347, in forward
+    return F.conv_transpose3d(
+RuntimeError: Given transposed=1, weight of size [16, 16, 3, 3, 3], expected input[16, 32, 64, 64, 64] to have 16 channels, but got 32 channels instead

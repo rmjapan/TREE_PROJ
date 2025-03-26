@@ -1,0 +1,15 @@
+{"time":"2025-03-18T15:30:58.481483066+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/home/ryuichi/tree/TREE_PROJ/wandb/run-20250318_153058-sehw2gam/logs/debug-core.log"}
+{"time":"2025-03-18T15:30:58.593158309+09:00","level":"INFO","msg":"created new stream","id":"sehw2gam"}
+{"time":"2025-03-18T15:30:58.593223387+09:00","level":"INFO","msg":"stream: started","id":"sehw2gam"}
+{"time":"2025-03-18T15:30:58.593298427+09:00","level":"INFO","msg":"handler: started","stream_id":"sehw2gam"}
+{"time":"2025-03-18T15:30:58.593274552+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"sehw2gam"}
+{"time":"2025-03-18T15:30:58.593341096+09:00","level":"INFO","msg":"sender: started","stream_id":"sehw2gam"}
+{"time":"2025-03-18T15:30:58.92782804+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-18T15:33:48.026859958+09:00","level":"INFO","msg":"stream: closing","id":"sehw2gam"}
+{"time":"2025-03-18T15:33:48.026906347+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-18T15:33:48.027940211+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-18T15:33:48.6960476+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-18T15:33:48.901952532+09:00","level":"INFO","msg":"handler: closed","stream_id":"sehw2gam"}
+{"time":"2025-03-18T15:33:48.902031354+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"sehw2gam"}
+{"time":"2025-03-18T15:33:48.902068158+09:00","level":"INFO","msg":"sender: closed","stream_id":"sehw2gam"}
+{"time":"2025-03-18T15:33:48.9022207+09:00","level":"INFO","msg":"stream: closed","id":"sehw2gam"}

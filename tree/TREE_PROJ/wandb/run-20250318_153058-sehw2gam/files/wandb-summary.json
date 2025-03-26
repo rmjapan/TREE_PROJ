@@ -1,0 +1,1 @@
+{"_wandb":{"runtime":169},"batch_mae_loss":0.004208255559206009,"_step":22,"epoch":0,"batch_loss":0.004208255559206009,"_runtime":166.176338858,"batch_iou_loss":0.36688053607940674,"batch_chamfer_loss":0.04491543024778366,"_timestamp":1.7422796246526325e+09}

@@ -1,0 +1,22 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.779
+MAE Loss:        0.779
+IoU Loss:        0.964
+Chamfer Loss:    0.810
+
+result_blank:85.24211645126343%
+result_trunk:11.68123483657837%
+result_branch:1.658719778060913%
+result_leaf:1.41792893409729%
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 420, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 365, in main
+    time.sleep(0.1)
+KeyboardInterrupt

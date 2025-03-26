@@ -1,0 +1,1069 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.006
+MAE Loss:        0.006
+IoU Loss:        0.623
+Chamfer Loss:    0.065
+
+result_blank:98.43527674674988%
+result_trunk:1.4438986778259277%
+result_branch:0.06963014602661133%
+result_leaf:0.05119442939758301%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.006
+MAE Loss:        0.006
+IoU Loss:        0.562
+Chamfer Loss:    0.053
+
+result_blank:98.26803803443909%
+result_trunk:1.3007104396820068%
+result_branch:0.28670430183410645%
+result_leaf:0.1445472240447998%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.492
+Chamfer Loss:    0.052
+
+result_blank:99.58911538124084%
+result_trunk:0.28090476989746094%
+result_branch:0.07790923118591309%
+result_leaf:0.05207061767578125%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.512
+Chamfer Loss:    0.054
+
+result_blank:99.78911876678467%
+result_trunk:0.14390945434570312%
+result_branch:0.039452314376831055%
+result_leaf:0.02751946449279785%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.482
+Chamfer Loss:    0.053
+
+result_blank:99.72955584526062%
+result_trunk:0.1455545425415039%
+result_branch:0.07475614547729492%
+result_leaf:0.050133466720581055%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.468
+Chamfer Loss:    0.053
+
+result_blank:99.64659810066223%
+result_trunk:0.20633339881896973%
+result_branch:0.09174942970275879%
+result_leaf:0.05531907081604004%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.459
+Chamfer Loss:    0.052
+
+result_blank:98.5217809677124%
+result_trunk:1.1580169200897217%
+result_branch:0.22634267807006836%
+result_leaf:0.09385943412780762%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.455
+Chamfer Loss:    0.052
+
+result_blank:98.51497411727905%
+result_trunk:1.17148756980896%
+result_branch:0.1964569091796875%
+result_leaf:0.1170814037322998%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.005
+MAE Loss:        0.005
+IoU Loss:        0.443
+Chamfer Loss:    0.051
+
+result_blank:98.92052412033081%
+result_trunk:0.8572161197662354%
+result_branch:0.1378953456878662%
+result_leaf:0.08436441421508789%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.444
+Chamfer Loss:    0.052
+
+result_blank:98.72671961784363%
+result_trunk:0.9710371494293213%
+result_branch:0.1852273941040039%
+result_leaf:0.11701583862304688%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.438
+Chamfer Loss:    0.051
+
+result_blank:98.52439165115356%
+result_trunk:1.1439502239227295%
+result_branch:0.23807883262634277%
+result_leaf:0.09357929229736328%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.437
+Chamfer Loss:    0.051
+
+result_blank:98.26515913009644%
+result_trunk:1.1098802089691162%
+result_branch:0.4488646984100342%
+result_leaf:0.17609596252441406%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.430
+Chamfer Loss:    0.050
+
+result_blank:98.35148453712463%
+result_trunk:0.9639143943786621%
+result_branch:0.45179128646850586%
+result_leaf:0.23280978202819824%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.424
+Chamfer Loss:    0.050
+
+result_blank:98.45448136329651%
+result_trunk:1.2546181678771973%
+result_branch:0.18633604049682617%
+result_leaf:0.10456442832946777%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.438
+Chamfer Loss:    0.051
+
+result_blank:98.80637526512146%
+result_trunk:0.9274780750274658%
+result_branch:0.12701749801635742%
+result_leaf:0.1391291618347168%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.439
+Chamfer Loss:    0.051
+
+result_blank:98.80735874176025%
+result_trunk:1.0247528553009033%
+result_branch:0.11303424835205078%
+result_leaf:0.05485415458679199%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.423
+Chamfer Loss:    0.050
+
+result_blank:98.59560132026672%
+result_trunk:1.07191801071167%
+result_branch:0.22507309913635254%
+result_leaf:0.1074075698852539%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.419
+Chamfer Loss:    0.050
+
+result_blank:98.63510131835938%
+result_trunk:1.0585784912109375%
+result_branch:0.2286076545715332%
+result_leaf:0.0777125358581543%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.413
+Chamfer Loss:    0.049
+
+result_blank:99.77311491966248%
+result_trunk:0.1114189624786377%
+result_branch:0.07290840148925781%
+result_leaf:0.042557716369628906%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.406
+Chamfer Loss:    0.049
+
+result_blank:98.65742325782776%
+result_trunk:1.1666178703308105%
+result_branch:0.12308955192565918%
+result_leaf:0.052869319915771484%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.414
+Chamfer Loss:    0.050
+
+result_blank:98.81480932235718%
+result_trunk:0.895148515701294%
+result_branch:0.21123290061950684%
+result_leaf:0.07880926132202148%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.416
+Chamfer Loss:    0.050
+
+result_blank:98.79502058029175%
+result_trunk:1.025921106338501%
+result_branch:0.09076595306396484%
+result_leaf:0.08829236030578613%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.407
+Chamfer Loss:    0.050
+
+result_blank:98.37217330932617%
+result_trunk:1.257920265197754%
+result_branch:0.2683579921722412%
+result_leaf:0.10154843330383301%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.406
+Chamfer Loss:    0.049
+
+result_blank:99.6995747089386%
+result_trunk:0.17722845077514648%
+result_branch:0.07908344268798828%
+result_leaf:0.0441133975982666%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.407
+Chamfer Loss:    0.049
+
+result_blank:99.81635212898254%
+result_trunk:0.09112954139709473%
+result_branch:0.05803108215332031%
+result_leaf:0.034487247467041016%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.401
+Chamfer Loss:    0.049
+
+result_blank:98.74081611633301%
+result_trunk:0.9453833103179932%
+result_branch:0.21309256553649902%
+result_leaf:0.1007080078125%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.404
+Chamfer Loss:    0.049
+
+result_blank:98.509681224823%
+result_trunk:1.1806011199951172%
+result_branch:0.2201855182647705%
+result_leaf:0.08953213691711426%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.400
+Chamfer Loss:    0.049
+
+result_blank:98.58438372612%
+result_trunk:1.0818958282470703%
+result_branch:0.22295117378234863%
+result_leaf:0.11076927185058594%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.407
+Chamfer Loss:    0.049
+
+result_blank:98.40686917304993%
+result_trunk:1.2257695198059082%
+result_branch:0.234144926071167%
+result_leaf:0.13321638107299805%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.399
+Chamfer Loss:    0.048
+
+result_blank:99.69576597213745%
+result_trunk:0.1369774341583252%
+result_branch:0.10828375816345215%
+result_leaf:0.058972835540771484%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.399
+Chamfer Loss:    0.049
+
+result_blank:98.50749373435974%
+result_trunk:1.1581957340240479%
+result_branch:0.21361708641052246%
+result_leaf:0.12069344520568848%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.396
+Chamfer Loss:    0.048
+
+result_blank:98.49797487258911%
+result_trunk:1.1262357234954834%
+result_branch:0.26421546936035156%
+result_leaf:0.11157393455505371%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.387
+Chamfer Loss:    0.048
+
+result_blank:98.23475480079651%
+result_trunk:1.2827932834625244%
+result_branch:0.3372490406036377%
+result_leaf:0.1452028751373291%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.405
+Chamfer Loss:    0.049
+
+result_blank:98.91741871833801%
+result_trunk:0.9890437126159668%
+result_branch:0.05321502685546875%
+result_leaf:0.04032254219055176%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.397
+Chamfer Loss:    0.049
+
+result_blank:99.58464503288269%
+result_trunk:0.1972675323486328%
+result_branch:0.15193819999694824%
+result_leaf:0.06614923477172852%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.391
+Chamfer Loss:    0.048
+
+result_blank:99.15333986282349%
+result_trunk:0.7443785667419434%
+result_branch:0.0650942325592041%
+result_leaf:0.03718733787536621%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.397
+Chamfer Loss:    0.049
+
+result_blank:99.73732829093933%
+result_trunk:0.13788342475891113%
+result_branch:0.0857234001159668%
+result_leaf:0.039064884185791016%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.390
+Chamfer Loss:    0.049
+
+result_blank:98.28839898109436%
+result_trunk:0.9856164455413818%
+result_branch:0.4233896732330322%
+result_leaf:0.3025949001312256%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.390
+Chamfer Loss:    0.048
+
+result_blank:99.71754550933838%
+result_trunk:0.10654926300048828%
+result_branch:0.10762214660644531%
+result_leaf:0.0682830810546875%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.387
+Chamfer Loss:    0.048
+
+result_blank:98.60226511955261%
+result_trunk:0.7852017879486084%
+result_branch:0.4731714725494385%
+result_leaf:0.13936161994934082%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.385
+Chamfer Loss:    0.048
+
+result_blank:99.72102642059326%
+result_trunk:0.13224482536315918%
+result_branch:0.10599493980407715%
+result_leaf:0.04073381423950195%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.384
+Chamfer Loss:    0.048
+
+result_blank:98.25890064239502%
+result_trunk:1.3029158115386963%
+result_branch:0.31722187995910645%
+result_leaf:0.12096166610717773%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.385
+Chamfer Loss:    0.047
+
+result_blank:98.77951741218567%
+result_trunk:0.9214162826538086%
+result_branch:0.2181410789489746%
+result_leaf:0.08092522621154785%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.383
+Chamfer Loss:    0.048
+
+result_blank:98.401540517807%
+result_trunk:0.8840560913085938%
+result_branch:0.5444228649139404%
+result_leaf:0.16998052597045898%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.385
+Chamfer Loss:    0.048
+
+result_blank:98.20278882980347%
+result_trunk:1.2274563312530518%
+result_branch:0.38666725158691406%
+result_leaf:0.18308758735656738%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.382
+Chamfer Loss:    0.047
+
+result_blank:98.7507700920105%
+result_trunk:1.0849058628082275%
+result_branch:0.1269817352294922%
+result_leaf:0.03734230995178223%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.380
+Chamfer Loss:    0.047
+
+result_blank:99.6333122253418%
+result_trunk:0.16911625862121582%
+result_branch:0.1108705997467041%
+result_leaf:0.0867009162902832%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.378
+Chamfer Loss:    0.048
+
+result_blank:98.03301095962524%
+result_trunk:1.4076530933380127%
+result_branch:0.23664236068725586%
+result_leaf:0.3226935863494873%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.382
+Chamfer Loss:    0.048
+
+result_blank:98.74539375305176%
+result_trunk:0.9406864643096924%
+result_branch:0.19758343696594238%
+result_leaf:0.11633634567260742%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.388
+Chamfer Loss:    0.048
+
+result_blank:99.6713936328888%
+result_trunk:0.1598358154296875%
+result_branch:0.09837150573730469%
+result_leaf:0.07039904594421387%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.376
+Chamfer Loss:    0.047
+
+result_blank:98.14767837524414%
+result_trunk:1.2226581573486328%
+result_branch:0.39179325103759766%
+result_leaf:0.2378702163696289%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.372
+Chamfer Loss:    0.047
+
+result_blank:98.3769416809082%
+result_trunk:1.1021852493286133%
+result_branch:0.3413200378417969%
+result_leaf:0.17955303192138672%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.377
+Chamfer Loss:    0.047
+
+result_blank:98.71313571929932%
+result_trunk:0.9435474872589111%
+result_branch:0.23531317710876465%
+result_leaf:0.10800361633300781%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.374
+Chamfer Loss:    0.047
+
+result_blank:98.48974347114563%
+result_trunk:1.134490966796875%
+result_branch:0.16862154006958008%
+result_leaf:0.20714402198791504%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.375
+Chamfer Loss:    0.047
+
+result_blank:98.4701931476593%
+result_trunk:1.018679141998291%
+result_branch:0.3182530403137207%
+result_leaf:0.19287467002868652%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.374
+Chamfer Loss:    0.047
+
+result_blank:98.70184063911438%
+result_trunk:0.9897172451019287%
+result_branch:0.23110508918762207%
+result_leaf:0.07733702659606934%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.375
+Chamfer Loss:    0.047
+
+result_blank:98.85328412055969%
+result_trunk:0.9996294975280762%
+result_branch:0.1007378101348877%
+result_leaf:0.04634857177734375%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.372
+Chamfer Loss:    0.047
+
+result_blank:99.04567003250122%
+result_trunk:0.8596301078796387%
+result_branch:0.06206035614013672%
+result_leaf:0.032639503479003906%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.376
+Chamfer Loss:    0.047
+
+result_blank:99.65496063232422%
+result_trunk:0.1312851905822754%
+result_branch:0.15213489532470703%
+result_leaf:0.06161928176879883%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.374
+Chamfer Loss:    0.047
+
+result_blank:98.83716106414795%
+result_trunk:0.5772173404693604%
+result_branch:0.44922828674316406%
+result_leaf:0.13639330863952637%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.371
+Chamfer Loss:    0.047
+
+result_blank:98.81551861763%
+result_trunk:0.8801639080047607%
+result_branch:0.2250373363494873%
+result_leaf:0.07928013801574707%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.369
+Chamfer Loss:    0.047
+
+result_blank:99.70359206199646%
+result_trunk:0.12122392654418945%
+result_branch:0.10613203048706055%
+result_leaf:0.06905198097229004%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.003
+MAE Loss:        0.003
+IoU Loss:        0.368
+Chamfer Loss:    0.047
+
+result_blank:99.66632723808289%
+result_trunk:0.12828707695007324%
+result_branch:0.14908909797668457%
+result_leaf:0.056296586990356445%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.369
+Chamfer Loss:    0.047
+
+result_blank:98.60190749168396%
+result_trunk:1.1189579963684082%
+result_branch:0.21606683731079102%
+result_leaf:0.06306767463684082%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.370
+Chamfer Loss:    0.047
+
+result_blank:98.46363067626953%
+result_trunk:0.838470458984375%
+result_branch:0.5120754241943359%
+result_leaf:0.1858234405517578%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.370
+Chamfer Loss:    0.047
+
+result_blank:99.78762865066528%
+result_trunk:0.10178685188293457%
+result_branch:0.0783383846282959%
+result_leaf:0.03224611282348633%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.370
+Chamfer Loss:    0.047
+
+result_blank:98.7318217754364%
+result_trunk:0.9202182292938232%
+result_branch:0.1789569854736328%
+result_leaf:0.16900300979614258%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.371
+Chamfer Loss:    0.046
+
+result_blank:98.50037097930908%
+result_trunk:1.1259078979492188%
+result_branch:0.20590424537658691%
+result_leaf:0.1678168773651123%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.364
+Chamfer Loss:    0.046
+
+result_blank:98.78632426261902%
+result_trunk:1.0602831840515137%
+result_branch:0.11467337608337402%
+result_leaf:0.03871917724609375%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.368
+Chamfer Loss:    0.046
+
+result_blank:98.8418459892273%
+result_trunk:0.6775617599487305%
+result_branch:0.367969274520874%
+result_leaf:0.11262297630310059%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.370
+Chamfer Loss:    0.047
+
+result_blank:98.26896786689758%
+result_trunk:0.877922773361206%
+result_branch:0.2267003059387207%
+result_leaf:0.6264090538024902%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.368
+Chamfer Loss:    0.046
+
+result_blank:98.44687581062317%
+result_trunk:0.7036089897155762%
+result_branch:0.6079733371734619%
+result_leaf:0.24154186248779297%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.363
+Chamfer Loss:    0.046
+
+result_blank:99.08696413040161%
+result_trunk:0.794750452041626%
+result_branch:0.08545517921447754%
+result_leaf:0.032830238342285156%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.373
+Chamfer Loss:    0.047
+
+result_blank:98.51832985877991%
+result_trunk:1.0168731212615967%
+result_branch:0.33270716667175293%
+result_leaf:0.13208985328674316%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.364
+Chamfer Loss:    0.046
+
+result_blank:98.35668206214905%
+result_trunk:1.1737465858459473%
+result_branch:0.3810584545135498%
+result_leaf:0.08851289749145508%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.368
+Chamfer Loss:    0.046
+
+result_blank:98.38060140609741%
+result_trunk:0.6935417652130127%
+result_branch:0.7354557514190674%
+result_leaf:0.1904010772705078%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.364
+Chamfer Loss:    0.046
+
+result_blank:98.34780097007751%
+result_trunk:1.222062110900879%
+result_branch:0.3237485885620117%
+result_leaf:0.10638833045959473%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.366
+Chamfer Loss:    0.047
+
+result_blank:98.84636998176575%
+result_trunk:0.524449348449707%
+result_branch:0.5185723304748535%
+result_leaf:0.11060833930969238%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.365
+Chamfer Loss:    0.046
+
+result_blank:98.54655265808105%
+result_trunk:1.1021852493286133%
+result_branch:0.26195645332336426%
+result_leaf:0.08930563926696777%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.363
+Chamfer Loss:    0.046
+
+result_blank:99.70735907554626%
+result_trunk:0.15717148780822754%
+result_branch:0.09111166000366211%
+result_leaf:0.0443577766418457%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.361
+Chamfer Loss:    0.046
+
+result_blank:99.0028977394104%
+result_trunk:0.8746504783630371%
+result_branch:0.07774233818054199%
+result_leaf:0.04470944404602051%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.359
+Chamfer Loss:    0.046
+
+result_blank:98.21195602416992%
+result_trunk:1.3450264930725098%
+result_branch:0.3163337707519531%
+result_leaf:0.12668371200561523%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.367
+Chamfer Loss:    0.046
+
+result_blank:98.79269599914551%
+result_trunk:0.9126424789428711%
+result_branch:0.2119898796081543%
+result_leaf:0.0826716423034668%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.364
+Chamfer Loss:    0.046
+
+result_blank:98.66774082183838%
+result_trunk:0.9945154190063477%
+result_branch:0.21427273750305176%
+result_leaf:0.12347102165222168%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.003
+MAE Loss:        0.003
+IoU Loss:        0.364
+Chamfer Loss:    0.046
+
+result_blank:98.80136251449585%
+result_trunk:0.8611440658569336%
+result_branch:0.2170562744140625%
+result_leaf:0.1204371452331543%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.363
+Chamfer Loss:    0.046
+
+result_blank:99.80068802833557%
+result_trunk:0.08933544158935547%
+result_branch:0.07129907608032227%
+result_leaf:0.03867745399475098%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.364
+Chamfer Loss:    0.046
+
+result_blank:98.23184013366699%
+result_trunk:1.2383460998535156%
+result_branch:0.41977763175964355%
+result_leaf:0.11003613471984863%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.003
+MAE Loss:        0.003
+IoU Loss:        0.365
+Chamfer Loss:    0.046
+
+result_blank:98.68674278259277%
+result_trunk:0.8830010890960693%
+result_branch:0.3445148468017578%
+result_leaf:0.08574128150939941%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.363
+Chamfer Loss:    0.046
+
+result_blank:98.57102632522583%
+result_trunk:1.0078072547912598%
+result_branch:0.3045022487640381%
+result_leaf:0.11666417121887207%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.003
+MAE Loss:        0.003
+IoU Loss:        0.360
+Chamfer Loss:    0.046
+
+result_blank:98.87951612472534%
+result_trunk:0.957024097442627%
+result_branch:0.13198256492614746%
+result_leaf:0.03147721290588379%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.361
+Chamfer Loss:    0.046
+
+result_blank:98.65576028823853%
+result_trunk:1.1396944522857666%
+result_branch:0.11300444602966309%
+result_leaf:0.09154081344604492%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.358
+Chamfer Loss:    0.046
+
+result_blank:99.29378628730774%
+result_trunk:0.3975331783294678%
+result_branch:0.244218111038208%
+result_leaf:0.06446242332458496%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.004
+MAE Loss:        0.004
+IoU Loss:        0.359
+Chamfer Loss:    0.046
+
+result_blank:98.39540719985962%
+result_trunk:1.2406647205352783%
+result_branch:0.27076005935668945%
+result_leaf:0.09316802024841309%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.003
+MAE Loss:        0.003
+IoU Loss:        0.356
+Chamfer Loss:    0.045
+
+result_blank:98.3324408531189%
+result_trunk:1.2713074684143066%
+result_branch:0.25571584701538086%
+result_leaf:0.14053583145141602%
+Epoch 1/1, Loss: 0.004044016323767711
+元の分布
+result_blank:98.61010313034058%
+result_trunk:0.8891403675079346%
+result_branch:0.45525431632995605%
+result_leaf:0.0455021858215332%
+result shape: (1, 1, 256, 256, 256)
+resultの分布
+result_blank:98.84852170944214%
+result_trunk:1.069730520248413%
+result_branch:0.04845261573791504%
+result_leaf:0.0332951545715332%
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 421, in <module>
+    if __name__ == "__main__":
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 410, in main
+    # モデルの保存
+  File "/home/ryuichi/tree/TREE_PROJ/save_train_result.py", line 43, in save_train_result
+    plt.show()
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/matplotlib/pyplot.py", line 612, in show
+    return _get_backend_mod().show(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/matplotlib/backend_bases.py", line 3553, in show
+    cls.mainloop()
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/matplotlib/backends/backend_qt.py", line 632, in start_main_loop
+    with _allow_interrupt_qt(qapp):
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/matplotlib/backend_bases.py", line 1672, in _allow_interrupt
+    old_sigint_handler(*handler_args)
+KeyboardInterrupt

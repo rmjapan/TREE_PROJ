@@ -1,0 +1,135 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.259
+MAE Loss:        0.005
+IoU Loss:        0.457
+Chamfer Loss:    0.050
+
+result_blank:98.67390990257263%
+result_trunk:1.1754870414733887%
+result_branch:0.09179115295410156%
+result_leaf:0.05881190299987793%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.249
+MAE Loss:        0.005
+IoU Loss:        0.440
+Chamfer Loss:    0.049
+
+result_blank:98.69995713233948%
+result_trunk:1.1491715908050537%
+result_branch:0.0950932502746582%
+result_leaf:0.05577802658081055%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.247
+MAE Loss:        0.004
+IoU Loss:        0.436
+Chamfer Loss:    0.050
+
+result_blank:98.68059754371643%
+result_trunk:1.156395673751831%
+result_branch:0.10306835174560547%
+result_leaf:0.05993843078613281%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.247
+MAE Loss:        0.004
+IoU Loss:        0.434
+Chamfer Loss:    0.050
+
+result_blank:98.8170862197876%
+result_trunk:0.9214460849761963%
+result_branch:0.16333460807800293%
+result_leaf:0.09813308715820312%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.243
+MAE Loss:        0.004
+IoU Loss:        0.428
+Chamfer Loss:    0.049
+
+result_blank:99.5050311088562%
+result_trunk:0.27288198471069336%
+result_branch:0.13753175735473633%
+result_leaf:0.08455514907836914%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.242
+MAE Loss:        0.004
+IoU Loss:        0.426
+Chamfer Loss:    0.050
+
+result_blank:98.21098446846008%
+result_trunk:1.3032197952270508%
+result_branch:0.30435919761657715%
+result_leaf:0.18143653869628906%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.241
+MAE Loss:        0.004
+IoU Loss:        0.424
+Chamfer Loss:    0.050
+
+result_blank:98.6720323562622%
+result_trunk:1.0336458683013916%
+result_branch:0.19127130508422852%
+result_leaf:0.10305047035217285%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.240
+MAE Loss:        0.004
+IoU Loss:        0.423
+Chamfer Loss:    0.050
+
+result_blank:98.98027181625366%
+result_trunk:0.6657242774963379%
+result_branch:0.19826292991638184%
+result_leaf:0.15574097633361816%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.238
+MAE Loss:        0.004
+IoU Loss:        0.419
+Chamfer Loss:    0.049
+
+result_blank:98.64740371704102%
+result_trunk:1.0207951068878174%
+result_branch:0.21558403968811035%
+result_leaf:0.11621713638305664%
+
+=== Loss Metrics (avg last 100 steps) ===
+Total Loss:      0.240
+MAE Loss:        0.004
+IoU Loss:        0.422
+Chamfer Loss:    0.049
+
+result_blank:98.51277470588684%
+result_trunk:1.1245250701904297%
+result_branch:0.2407848834991455%
+result_leaf:0.12191534042358398%
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 420, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 286, in main
+    for x in Svsdataloader:
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/ryuichi/tree/TREE_PROJ/my_dataset/svsdataset.py", line 15, in __getitem__
+    svs=npz2dense(svs)
+  File "/home/ryuichi/tree/TREE_PROJ/utils.py", line 14, in npz2dense
+    dense_matrix=sparse_matrix.toarray().reshape(H,W,D)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/scipy/sparse/_compressed.py", line 1062, in toarray
+    csr_todense(M, N, x.indptr, x.indices, x.data, y)
+KeyboardInterrupt
