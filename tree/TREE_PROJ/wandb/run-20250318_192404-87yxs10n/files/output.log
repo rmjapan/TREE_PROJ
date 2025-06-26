@@ -1,0 +1,23 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/loss.py:128: UserWarning: Using a target size (torch.Size([16, 1, 256, 256, 256])) that is different to the input size (torch.Size([16, 1, 512, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.l1_loss(input, target, reduction=self.reduction)
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 420, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 290, in main
+    mae_loss=L1_Loss(recon_x,x)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 128, in forward
+    return F.l1_loss(input, target, reduction=self.reduction)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/functional.py", line 3753, in l1_loss
+    expanded_input, expanded_target = torch.broadcast_tensors(input, target)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/functional.py", line 76, in broadcast_tensors
+    return _VF.broadcast_tensors(tensors)  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (512) must match the size of tensor b (256) at non-singleton dimension 4

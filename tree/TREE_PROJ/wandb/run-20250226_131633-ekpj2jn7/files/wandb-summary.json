@@ -1,0 +1,1 @@
+{"epoch":0,"batch_loss":0.2314341813325882,"batch_mse_loss":0.002741945441812277,"batch_iou_loss":0.40861958265304565,"_timestamp":1.7405438373513114e+09,"_wandb":{"runtime":448},"_runtime":443.414480378,"_step":64,"batch_chamfer_loss":0.04876488447189331}

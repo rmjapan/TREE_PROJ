@@ -1,0 +1,20 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+[34m[1mwandb[0m: [32m[41mERROR[0m Attempted to change value of key "dataset_size" from None to 150000
+[34m[1mwandb[0m: [32m[41mERROR[0m If you really want to do this, pass allow_val_change=True to config.update()
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 437, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 292, in main
+    wandb.config.update({"dataset_size": len(Svsdataset)})
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/wandb/sdk/wandb_config.py", line 187, in update
+    sanitized = self._update(d, allow_val_change)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/wandb/sdk/wandb_config.py", line 180, in _update
+    sanitized = self._sanitize_dict(
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/wandb/sdk/wandb_config.py", line 267, in _sanitize_dict
+    k, v = self._sanitize(k, v, allow_val_change)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/wandb/sdk/wandb_config.py", line 288, in _sanitize
+    raise config_util.ConfigError(
+wandb.sdk.lib.config_util.ConfigError: Attempted to change value of key "dataset_size" from None to 150000
+If you really want to do this, pass allow_val_change=True to config.update()
