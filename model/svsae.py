@@ -24,7 +24,7 @@ from typing import Callable, Optional, Union
 from copy import deepcopy
 from diffusers.utils import CONFIG_NAME, SAFETENSORS_WEIGHTS_NAME, WEIGHTS_NAME
 from torch.nn import AdaptiveAvgPool3d
-from torch import functional as F
+import torch.nn.functional as F
 
 class SEBlock(nn.Module):
     """Original Squeeze-and-Excitation Block from CVPR 2018"""
@@ -164,13 +164,13 @@ class VectorQuantizer(nn.Module):
         Encoderの出力ｘとCodeBookのベクトルの距離を計算する.
         """
         x_flat=x.view(-1,self.D)
-        distances =torch.sum(x_flat,dim=1,keepdim=True)+torch.sum(self.embedding.weight,dim=1)-2*torch.matmul(x_flat,self.embedding.weight.T)
+        distances =torch.sum(x_flat,dim=1,keepdim=True)
+        +torch.sum(self.embedding.weight,dim=1)-2*torch.matmul(x_flat,self.embedding.weight.T)
         return distances
     def vector_quantized(self,x):
         """
         Encoderの出力を量子化する.
         """
-        x=x.permute(0,2,3,4,1).contiguous()
         x_shape=x.shape
         distances=self.CalcDist_x2codebook(x)
                 # 最近傍のインデックスを取得(もっとも距離が近かったCodeBookのベクトル番号を取得）
@@ -195,9 +195,8 @@ class VectorQuantizer(nn.Module):
         loss =q_latent_loss+self.beta*e_latent_loss
         return loss
         
-        
-        
     def forward(self,x:torch.Tensor):
+        x=x.permute(0,2,3,4,1).contiguous()
         quantized,encodings=self.vector_quantized(x)
         loss =self.calc_loss(quantized,x)
         return loss,quantized.permute(0,4,1,2,3).contiguous(),encodings
@@ -333,7 +332,6 @@ class SVSEncoder_ver2(torch.nn.Module):
     def __init__(self, config: AutoencoderConfig):
         super().__init__()
         self.config = config
-        
         
         # 新しいブロック構成 [(out_channels, stride)]
         self.blocks = nn.Sequential(
@@ -504,10 +502,12 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    config=AutoencoderConfig()
+    config=AutoencoderConfig(device="cuda")
+    encoder=SVSEncoder_ver2(config).to(config.device)
+    decoder=SVSDecoder_ver2(config).to(config.device)
     vq=VectorQuantizer(config,0.9)
-    config=AutoencoderConfig()
-    input=torch.randn((1,1,64,64,64)).to("cuda")
-    output=vq(input)
-    
+    input=torch.randn((1,1,256,256,256)).to(config.device)
+    en_out=encoder(input)
+    loss,vq_output,emb=vq(en_out)
+    de_output=decoder(vq_output)
 
