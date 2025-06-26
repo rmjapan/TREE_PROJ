@@ -1,0 +1,21 @@
+データセットの読み込みを開始します
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+データセットのサイズ: 150000
+0回目の訓練を開始しました
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 420, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_svsae.py", line 286, in main
+    for x in Svsdataloader:
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/ryuichi/tree/TREE_PROJ/my_dataset/svsdataset.py", line 21, in __getitem__
+    svs=torch.tensor(svs).float()
+KeyboardInterrupt

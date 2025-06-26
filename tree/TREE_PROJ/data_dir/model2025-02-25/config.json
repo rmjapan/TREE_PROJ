@@ -1,0 +1,1 @@
+{"in_channels": 1, "out_channels": 1, "block_out_channels": [4, 8, 16], "latent_channels": 1, "scaling_factor": 0.09366, "sample_size": 256}
