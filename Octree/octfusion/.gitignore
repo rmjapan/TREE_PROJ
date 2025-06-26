@@ -1,0 +1,42 @@
+# extensions
+*.pyc
+*.tar.gz
+*.tar.xz
+*.tar
+*.zip
+*.gif
+*.rar
+LICENSE
+
+# cache
+__pycache__/
+.ipynb*/
+
+# checkpoints
+/saved_ckpt
+Tencent/
+
+# logs
+/logs
+logs_home/
+quant_logs*/
+qual_logs*/
+
+# data
+data
+data1
+demo_data/
+*results*/
+*airplane*/
+*chair*/
+*table*/
+*car*/
+*rifle*/
+split_small/
+*.pth
+*.pkl
+
+# bak
+bak*/
+/.vscode
+/mytools

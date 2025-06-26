@@ -1,0 +1,42 @@
+model/wandb/
+__pycache__/
+*.pyc
+model/lightning_logs/
+loss
+Octree/octfusion/saved_ckpt
+Octree/octfusion/logs
+vc_overview/
+*.dll
+*.npy
+*.png
+*.npz
+*.pth
+*.safetensors
+SVDTree/TreeFromPoints_exe/
+SVDTree/DiffTreeVxl/dataset/
+model/test.npy
+Octree/octfusion/assets/teaser.png
+# モデルファイル
+*.pth
+# 画像ファイル
+*.png
+# ログファイル
+logs/
+runs/
+lightning_logs/
+# データディレクトリ
+data_dir/
+# Python キャッシュ
+__pycache__/
+# モデルファイル
+*.pth
+# 画像ファイル
+*.png
+# ログファイル
+logs/
+runs/
+lightning_logs/
+# データディレクトリ
+data_dir/
+# Python キャッシュ
+__pycache__/

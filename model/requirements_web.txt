@@ -1,0 +1,7 @@
+flask==2.3.3
+plotly==5.17.0
+numpy
+pillow
+torch
+torchvision
+pytorch-lightning 
