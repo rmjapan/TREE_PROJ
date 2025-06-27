@@ -14,13 +14,22 @@ class SvsDataLoader(pl.LightningDataModule):
         batch_size: int = 8,
     ):
         super(SvsDataLoader, self).__init__()
-
         self.batch_size = batch_size
-        train_dataset = SvsDataset(data_dir)
-        length = len(train_dataset)
-        train_length = int(length * 0.8)
-        val_length = length - train_length
-        self.train_data, self.val_data = random_split(train_dataset, [train_length, val_length])
+        self.data_dir= data_dir
+        self.num_workers=4
+
+    
+    def setup(self,stage=None):
+        if stage == "fit" or stage is None:
+            full_dataset=SvsDataset(self.data_dir)
+            total_length = len(full_dataset)
+            train_length = int(total_length * 0.8)
+            val_length = total_length - train_length
+            self.train_dataset, self.val_dataset = random_split(
+                full_dataset, [train_length,val_length],
+                generator=torch.Genrator().manual_seed(42)
+                )
+            
     
     def train_dataloader(self):
         return DataLoader(
