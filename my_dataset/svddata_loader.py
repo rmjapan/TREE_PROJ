@@ -9,7 +9,7 @@ import sys
 sys.path.append("/home/ryuichi/tree/TREE_PROJ")
 from utils import npz2dense 
 
-class TreeDataLoader(pl.LightningDataModule):
+class Tree_sketch_DataLoader(pl.LightningDataModule):
     def __init__(
         self,
         data_dir: str="/mnt/nas/rmjapan2000/tree/data_dir",
@@ -18,7 +18,7 @@ class TreeDataLoader(pl.LightningDataModule):
         debug: bool=False,
     ):
         #transformsやデータの次元をクラス変数に設定する.
-        super(TreeDataLoader, self).__init__()
+        super(Tree_sketch_DataLoader, self).__init__()
         self.data_dir = data_dir
         self.batch_size = batch_size
         self.train_path = os.path.join(self.data_dir, "train")
@@ -35,7 +35,7 @@ class TreeDataLoader(pl.LightningDataModule):
         val_length = length-train_length
         self.train_data, self.val_data = random_split(train_dataset, [train_length,val_length])
         self.train_data = train_dataset
-        self.test_data = voxel_sketch_Dataset(self.train_path, img_size)
+        self.test_data = voxel_sketch_Dataset(self.test_path, img_size)
 
     def train_dataloader(self):
         return DataLoader(
