@@ -154,7 +154,7 @@ class VectorQuantizer(nn.Module):
         # コードブックサイズを現実的な値に変更（64^3は大きすぎる）
         self.K=512  # または1024, 2048など
         self.embedding=nn.Embedding(self.K,self.D).to("cuda")
-        print(f"Embedding shape: {self.embedding.weight.shape}")
+        # print(f"Embedding shape: {self.embedding.weight.shape}")
         #重みの初期化
         self.embedding.weight.data.uniform_(-1/self.K,1/self.K)
         self.beta=beta
@@ -183,7 +183,7 @@ class VectorQuantizer(nn.Module):
         
         #量子化する+形状をChange
         quantized=torch.matmul(encodings,self.embedding.weight).view(x_shape)
-        print(quantized.shape)
+        # print(quantized.shape)
         return quantized,encodings
     def calc_loss(self,quantized,x):
         """
