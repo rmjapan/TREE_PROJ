@@ -4,7 +4,7 @@ import torch
 from utils import npz2dense
 from data_augmentation.aug_trans import *
 from data_augmentation.aug_flip import *
-import pytorch_lightning as pl
+import lightning.pytorch as pl
 from torch.utils.data import Dataset, DataLoader, random_split
 
 class SvsDataLoader(pl.LightningDataModule):
@@ -13,7 +13,7 @@ class SvsDataLoader(pl.LightningDataModule):
         data_dir: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svd_0.2",
         batch_size: int = 8,
     ):
-        super(SvsDataLoader, self).__init__()
+        super().__init__()
         self.batch_size = batch_size
         self.data_dir= data_dir
         self.num_workers=4
@@ -27,10 +27,11 @@ class SvsDataLoader(pl.LightningDataModule):
             val_length = total_length - train_length
             self.train_dataset, self.val_dataset = random_split(
                 full_dataset, [train_length,val_length],
-                generator=torch.Genrator().manual_seed(42)
+                generator=torch.Generator().manual_seed(42)
                 )
             
-    
+    def prepare_data(self):
+        pass
     def train_dataloader(self):
         return DataLoader(
             self.train_dataset,
