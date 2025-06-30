@@ -1,0 +1,4464 @@
+_wandb:
+    value:
+        cli_version: 0.19.7
+        m:
+            - "1": parameters/encode.blocks.2.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": epoch
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": train_total_loss_step
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/vq.embedding.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/vq.embedding.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/vq.embedding.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": train_vq_loss_step
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/vq.embedding.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": train_recon_loss_step
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/vq.embedding.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.se.fc.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.se.fc.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.5.1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.0.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.se.fc.2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.2.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.conv1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.2.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.bn1.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/vq.embedding.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.3.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.1.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.se.fc.2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.5.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.0.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.bn1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.0.1.se.fc.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.1.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.0.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn1.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.0.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.3.1.conv2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.0.1.bn2.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.4.1.conv2.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv1.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.3.0.bias.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.se.fc.2.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.bn2.weight.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/decode.blocks.1.1.conv1.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.4.1.conv1.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.3.0.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.2.1.bn2.bias.bins
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": parameters/encode.blocks.2.1.bn1.bias._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/decode.blocks.1.1.conv2.weight.values
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": gradients/encode.blocks.0.0.weight._type
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+        python_version: 3.10.0
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 83
+                - 98
+                - 106
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 83
+                - 98
+                - 106
+            "3":
+                - 1
+                - 7
+                - 23
+                - 55
+                - 62
+                - 66
+            "4": 3.10.0
+            "5": 0.19.7
+            "6": 4.51.3
+            "8":
+                - 5
+            "12": 0.19.7
+            "13": linux-x86_64

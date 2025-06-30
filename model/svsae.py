@@ -164,8 +164,8 @@ class VectorQuantizer(nn.Module):
         Encoderの出力ｘとCodeBookのベクトルの距離を計算する.
         """
         x_flat=x.view(-1,self.D)
-        distances =torch.sum(x_flat,dim=1,keepdim=True)
-        +torch.sum(self.embedding.weight,dim=1)-2*torch.matmul(x_flat,self.embedding.weight.T)
+        distances =torch.sum(x_flat**2,dim=1,keepdim=True)
+        distances+=torch.sum(self.embedding.weight**2,dim=1)-2*torch.matmul(x_flat,self.embedding.weight.T)
         return distances
     def vector_quantized(self,x):
         """
