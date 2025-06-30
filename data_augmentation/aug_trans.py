@@ -1,10 +1,6 @@
-from pyvista import voxelize
 import torch
-from torch_geometric.datasets import ModelNet
+# from torch_geometric.datasets import ModelNet
 from pytorch3d.transforms import Translate
-import os
-import sys
-
 import sys
 sys.path.append("/home/ryuichi/tree/TREE_PROJ")
 from utils import pyg_to_voxel
@@ -69,41 +65,41 @@ def translate_voxel(voxel, translation_vector):
     
     return translated_voxel
 
-def main():
-    # ModelNetデータセットの読み込み
-    modelnet_10 = ModelNet("mydata1", name="10", train=True)
+# def main():
+#     # ModelNetデータセットの読み込み
+#     modelnet_10 = ModelNet("mydata1", name="10", train=True)
     
-    # メッシュデータの取得とボクセル化
-    mesh = modelnet_10[0]
-    voxel_size = 32
-    voxel = torch.from_numpy(pyg_to_voxel(mesh, voxel_size))
+#     # メッシュデータの取得とボクセル化
+#     mesh = modelnet_10[0]
+#     voxel_size = 32
+#     voxel = torch.from_numpy(pyg_to_voxel(mesh, voxel_size))
     
-    # 平行移動量の設定
-    translation = torch.tensor([[4,4,4]])
+#     # 平行移動量の設定
+#     translation = torch.tensor([[4,4,4]])
     
-    # 平行移動の適用
-    translated_voxel = translate_voxel(voxel, translation)
+#     # 平行移動の適用
+#     translated_voxel = translate_voxel(voxel, translation)
     
-    # 元のボクセルデータの可視化
-    visualize_with_timeout(voxel.numpy())
+#     # 元のボクセルデータの可視化
+#     visualize_with_timeout(voxel.numpy())
     
-    # 平行移動後のボクセルデータの可視化
-    visualize_with_timeout(translated_voxel.numpy())
+#     # 平行移動後のボクセルデータの可視化
+#     visualize_with_timeout(translated_voxel.numpy())
 
-def test_numpy():
-    voxel_size=256
-    x, y, z = np.meshgrid(
-        np.arange(voxel_size),
-        np.arange(voxel_size),
-        np.arange(voxel_size),
-        indexing='ij'
-    )
-    index=np.stack([x,y,z],axis=-1).reshape(-1,3)
-    print(index[0])
+# def test_numpy():
+#     voxel_size=256
+#     x, y, z = np.meshgrid(
+#         np.arange(voxel_size),
+#         np.arange(voxel_size),
+#         np.arange(voxel_size),
+#         indexing='ij'
+#     )
+#     index=np.stack([x,y,z],axis=-1).reshape(-1,3)
+#     print(index[0])
     
-if __name__ == "__main__":
-    test_numpy()
-    voxel=np.random.randint(0,2,(256,256,256))
-    translation=np.array([[4,4,4]])
-    translation=torch.from_numpy(translation)
-    translated_voxel=translate_voxel(voxel,translation)
+# if __name__ == "__main__":
+#     test_numpy()
+#     voxel=np.random.randint(0,2,(256,256,256))
+#     translation=np.array([[4,4,4]])
+#     translation=torch.from_numpy(translation)
+#     translated_voxel=translate_voxel(voxel,translation)

@@ -1,0 +1,35 @@
+[34m[1mwandb[0m: logging graph, to disable use `wandb.watch(log_graph=False)`
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 84, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 81, in main
+[rank0]:     trainer.fit(model,datamodule=dataloader)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 543, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 43, in _call_and_handle_interrupt
+[rank0]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank0]:     return function(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 579, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=ckpt_path)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 948, in _run
+[rank0]:     call._call_setup_hook(self)  # allow user to set up LightningModule in accelerator environment
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 94, in _call_setup_hook
+[rank0]:     _call_lightning_datamodule_hook(trainer, "setup", stage=fn)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 181, in _call_lightning_datamodule_hook
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/my_dataset/svsdataset.py", line 30, in setup
+[rank0]:     self.train_dataset, self.val_dataset = random_split(
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataset.py", line 476, in random_split
+[rank0]:     raise ValueError(
+[rank0]: ValueError: Sum of input lengths does not equal the length of the input dataset!

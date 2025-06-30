@@ -5,26 +5,31 @@ from utils import npz2dense
 from data_augmentation.aug_trans import *
 from data_augmentation.aug_flip import *
 import lightning.pytorch as pl
-from torch.utils.data import Dataset, DataLoader, random_split
+from torch.utils.data import Dataset, DataLoader, random_split, Subset
 
 class SvsDataLoader(pl.LightningDataModule):
     def __init__(
         self,
         data_dir: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svd_0.2",
         batch_size: int = 8,
+        sub_dataset: bool = False,
     ):
         super().__init__()
         self.batch_size = batch_size
         self.data_dir= data_dir
         self.num_workers=4
-
+        self.sub_dataset=sub_dataset
     
     def setup(self,stage=None):
         if stage == "fit" or stage is None:
             full_dataset=SvsDataset(self.data_dir)
+            if self.sub_dataset:
+                full_dataset=Subset(full_dataset,range(24))
+                
             total_length = len(full_dataset)
             train_length = int(total_length * 0.8)
             val_length = total_length - train_length
+            print(train_length,val_length)
             self.train_dataset, self.val_dataset = random_split(
                 full_dataset, [train_length,val_length],
                 generator=torch.Generator().manual_seed(42)

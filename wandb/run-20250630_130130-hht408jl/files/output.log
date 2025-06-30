@@ -1,0 +1,21 @@
+[34m[1mwandb[0m: logging graph, to disable use `wandb.watch(log_graph=False)`
+Traceback (most recent call last):
+  File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 84, in <module>
+    main()
+  File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 73, in main
+    trainer= Trainer(
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 430, in __init__
+    self._callback_connector.on_trainer_init(
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/callback_connector.py", line 79, in on_trainer_init
+    _validate_callbacks_list(self.trainer.callbacks)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/callback_connector.py", line 227, in _validate_callbacks_list
+    stateful_callbacks = [cb for cb in callbacks if is_overridden("state_dict", instance=cb)]
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/callback_connector.py", line 227, in <listcomp>
+    stateful_callbacks = [cb for cb in callbacks if is_overridden("state_dict", instance=cb)]
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/utilities/model_helpers.py", line 41, in is_overridden
+    _check_mixed_imports(instance)
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/utilities/model_helpers.py", line 96, in _check_mixed_imports
+    raise TypeError(
+TypeError: You passed a `pytorch_lightning` object (ModelCheckpoint) to a `lightning.pytorch` Trainer. Please switch to a single import style.
