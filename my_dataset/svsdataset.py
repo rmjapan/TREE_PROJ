@@ -65,10 +65,11 @@ class SvsDataset(Dataset):
     def __getitem__(self,idx):
         svs=np.load(self.data_dir+f"/svs_{idx+1}.npz")
         svs=npz2dense(svs)
-        svs[svs==0]=-1.0
-        svs[svs==1]=0.0
-        svs[svs==1.5]=0.5
-        svs[svs==2]=1.0
+        svs = np.where(np.isclose(svs, 0), -1.0, svs)
+        svs = np.where(np.isclose(svs, 1), 0.0, svs)
+        svs = np.where(np.isclose(svs, 1.5), 0.5, svs)
+        svs = np.where(np.isclose(svs, 2), 1.0, svs)
+
         svs=torch.tensor(svs).float()
         svs=torch.unsqueeze(svs,0)
         return svs

@@ -13,9 +13,9 @@ from lightning.pytorch.loggers import WandbLogger
 class VQVAE(LightningModule):
     def __init__(self,model_config):
         super().__init__()
-        self.encode=SVSEncoder_ver2(model_config).to(model_config.device)
-        self.decode=SVSDecoder_ver2(model_config).to(model_config.device)
-        self.vq=VectorQuantizer(model_config,beta=0.25).to(model_config.device)
+        self.encode=SVSEncoder_ver2(model_config)
+        self.decode=SVSDecoder_ver2(model_config)
+        self.vq=VectorQuantizer(model_config,beta=0.25)
         
     def training_step(self,batch,batch_idx):
         #foward プロセス
@@ -29,9 +29,9 @@ class VQVAE(LightningModule):
         total_loss = recon_loss + vq_loss   
         
         # ログ記録（個別の損失も記録すると分析しやすい）
-        self.log('train_total_loss', total_loss, on_step=True, on_epoch=True, prog_bar=True,logger=True)
-        self.log('train_recon_loss', recon_loss, on_step=True, on_epoch=True,logger=True)
-        self.log('train_vq_loss', vq_loss, on_step=True, on_epoch=True,logger=True)
+        self.log('train_total_loss', total_loss, on_step=True, on_epoch=True, prog_bar=True,logger=True,sync_dist=True)
+        self.log('train_recon_loss', recon_loss, on_step=True, on_epoch=True,logger=True,sync_dist=True)
+        self.log('train_vq_loss', vq_loss, on_step=True, on_epoch=True,logger=True,sync_dist=True)
         return total_loss
     def validation_step(self,batch,batch_idx):
         x=batch
@@ -39,9 +39,9 @@ class VQVAE(LightningModule):
         vq_loss,vq_output,emb=self.vq(latent_feature)
         x_recon=self.decode(vq_output)
         recon_loss=F.mse_loss(x_recon,x)
-        self.log("val_total_loss",vq_loss+recon_loss,on_epoch=True,logger=True)
-        self.log("val_recon_loss",recon_loss,on_epoch=True,logger=True)
-        self.log("val_vq_loss",vq_loss,on_epoch=True,logger=True)
+        self.log("val_total_loss",vq_loss+recon_loss,on_epoch=True,logger=True,sync_dist=True,prog_bar=True)
+        self.log("val_recon_loss",recon_loss,on_epoch=True,logger=True,sync_dist=True,prog_bar=True)
+        self.log("val_vq_loss",vq_loss,on_epoch=True,logger=True,sync_dist=True,prog_bar=True)
         return vq_loss+recon_loss
     def configure_optimizers(self):
         # RAdamのスケジュールフリー版を使用
@@ -82,7 +82,7 @@ def main():
         accelerator="cuda",
         devices="auto",
         max_epochs=100,
-        strategy="ddp",
+        strategy="ddp_find_unused_parameters_true",
         callbacks=[checkpoint_callback],
         logger=logger,
     )

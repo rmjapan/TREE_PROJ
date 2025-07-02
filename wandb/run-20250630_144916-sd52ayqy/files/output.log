@@ -1,0 +1,79 @@
+[34m[1mwandb[0m: logging graph, to disable use `wandb.watch(log_graph=False)`
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+120000 30000
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name   | Type            | Params | Mode
+---------------------------------------------------
+0 | encode | SVSEncoder_ver2 | 25.4 K | train
+1 | decode | SVSDecoder_ver2 | 93.9 K | train
+2 | vq     | VectorQuantizer | 512    | train
+---------------------------------------------------
+119 K     Trainable params
+0         Non-trainable params
+119 K     Total params
+0.479     Total estimated model params size (MB)
+Sanity Checking: |                                                                                                                                                                                      | 0/? [00:00<?, ?it/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 92, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 89, in main
+[rank0]:     trainer.fit(model,datamodule=dataloader)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 543, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 43, in _call_and_handle_interrupt
+[rank0]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank0]:     return function(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 579, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=ckpt_path)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 986, in _run
+[rank0]:     results = self._run_stage()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 1028, in _run_stage
+[rank0]:     self._run_sanity_check()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 1057, in _run_sanity_check
+[rank0]:     val_loop.run()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/utilities.py", line 182, in _decorator
+[rank0]:     return loop_run(self, *args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 128, in run
+[rank0]:     batch, batch_idx, dataloader_idx = next(data_fetcher)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/fetchers.py", line 133, in __next__
+[rank0]:     batch = super().__next__()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/fetchers.py", line 60, in __next__
+[rank0]:     batch = next(self.iterator)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/utilities/combined_loader.py", line 341, in __next__
+[rank0]:     out = next(self._iterator)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/utilities/combined_loader.py", line 142, in __next__
+[rank0]:     out = next(self.iterators[0])
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 733, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1515, in _next_data
+[rank0]:     return self._process_data(data, worker_id)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1550, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/_utils.py", line 750, in reraise
+[rank0]:     raise exception
+[rank0]: AttributeError: Caught AttributeError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+[rank0]:     data = self.dataset.__getitems__(possibly_batched_index)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataset.py", line 416, in __getitems__
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/utils/data/dataset.py", line 416, in <listcomp>
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/my_dataset/svsdataset.py", line 67, in __getitem__
+[rank0]:     svs=npz2dense(svs)
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/utils.py", line 16, in npz2dense
+[rank0]:     dense_matrix=sparse_matrix.toarray().reshape(H,W,D).contiguous()
+[rank0]: AttributeError: 'numpy.ndarray' object has no attribute 'contiguous'

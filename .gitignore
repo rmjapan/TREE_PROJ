@@ -40,3 +40,4 @@ lightning_logs/
 data_dir/
 # Python キャッシュ
 __pycache__/
+wandb

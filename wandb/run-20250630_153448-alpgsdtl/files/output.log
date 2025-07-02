@@ -1,0 +1,37 @@
+[34m[1mwandb[0m: logging graph, to disable use `wandb.watch(log_graph=False)`
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+120000 30000
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name   | Type            | Params | Mode
+---------------------------------------------------
+0 | encode | SVSEncoder_ver2 | 25.4 K | train
+1 | decode | SVSDecoder_ver2 | 93.9 K | train
+2 | vq     | VectorQuantizer | 512    | train
+---------------------------------------------------
+119 K     Trainable params
+0         Non-trainable params
+119 K     Total params
+0.479     Total estimated model params size (MB)
+Epoch 0:   1%|▎                                              | 91/15000 [04:54<13:24:50,  0.31it/s, v_num=sdtl, train_total_loss_step=0.828]train_vqvae.py
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/autograd/graph.py:824: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [1, 1, 3, 3, 3], strides() = [27, 1, 9, 3, 1]
+bucket_view.sizes() = [1, 1, 3, 3, 3], strides() = [27, 27, 9, 3, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:328.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py:54: Detected KeyboardInterrupt, attempting graceful shutdown...
+Exception ignored in atexit callback: <function _destroy_dist_connection at 0x7fd33ec1fd90>
+Traceback (most recent call last):
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/fabric/utilities/distributed.py", line 310, in _destroy_dist_connection
+    torch.distributed.destroy_process_group()
+  File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py", line 2135, in destroy_process_group
+    pg_to_shutdown.shutdown()
+KeyboardInterrupt:

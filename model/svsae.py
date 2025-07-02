@@ -40,8 +40,8 @@ class SEBlock(nn.Module):
 
     def forward(self, x):
         b, c = x.shape[:2]
-        y = self.pool(x).view(b, c)
-        y = self.fc(y).view(b, c, 1, 1, 1)
+        y = self.pool(x).reshape(b, c)
+        y = self.fc(y).reshape(b, c, 1, 1, 1)
         return x * y
 
 class SEResNetBlock(nn.Module):
@@ -53,7 +53,7 @@ class SEResNetBlock(nn.Module):
         self.conv2 = Conv3d(out_channels, out_channels, kernel_size=3, padding=1)
         self.bn2 = nn.BatchNorm3d(out_channels)
         self.se = SEBlock(out_channels)
-        self.relu = ReLU(inplace=True)
+        self.relu = LeakyReLU(inplace=True)
 
         self.shortcut = nn.Sequential()
         if stride != 1 or in_channels != out_channels:
@@ -81,7 +81,7 @@ class DecoderSEResNetBlock(nn.Module):
         self.conv2 = ConvTranspose3d(out_channels, out_channels, kernel_size=3, padding=1)
         self.bn2 = nn.BatchNorm3d(out_channels)
         self.se = SEBlock(out_channels)
-        self.relu = ReLU(inplace=True)
+        self.relu = LeakyReLU(inplace=True)
 
         self.shortcut = nn.Sequential()
         if in_channels != out_channels:
@@ -153,19 +153,19 @@ class VectorQuantizer(nn.Module):
         self.D=config.latent_channels
         # コードブックサイズを現実的な値に変更（64^3は大きすぎる）
         self.K=512  # または1024, 2048など
-        self.embedding=nn.Embedding(self.K,self.D).to("cuda")
+        self.embedding=nn.Embedding(self.K,self.D)
         # print(f"Embedding shape: {self.embedding.weight.shape}")
         #重みの初期化
-        self.embedding.weight.data.uniform_(-1/self.K,1/self.K)
+        nn.init.uniform_(self.embedding.weight,-1/self.K,1/self.K)
         self.beta=beta
-        self.device=config.device
     def CalcDist_x2codebook(self,x):
         """
         Encoderの出力ｘとCodeBookのベクトルの距離を計算する.
         """
         x_flat=x.view(-1,self.D)
-        distances =torch.sum(x_flat**2,dim=1,keepdim=True)
-        distances+=torch.sum(self.embedding.weight**2,dim=1)-2*torch.matmul(x_flat,self.embedding.weight.T)
+        distances =(torch.sum(x_flat**2,dim=1,keepdim=True)
+        + torch.sum(self.embedding.weight**2,dim=1)
+        -2*torch.matmul(x_flat,self.embedding.weight.t()))
         return distances
     def vector_quantized(self,x):
         """
@@ -177,7 +177,7 @@ class VectorQuantizer(nn.Module):
         encoding_indices = torch.argmin(distances, dim=1).unsqueeze(1)
         
         #onehotベクトルをつくる.
-        encodings=torch.zeros(encoding_indices.shape[0],self.K,device=self.device)
+        encodings=torch.zeros(encoding_indices.shape[0],self.K,device=x.device)
         #Kのところに1を入れる.encoding indicesで指定されたindexのところに
         encodings.scatter_(1,encoding_indices,1)
         
@@ -199,6 +199,7 @@ class VectorQuantizer(nn.Module):
         x=x.permute(0,2,3,4,1).contiguous()
         quantized,encodings=self.vector_quantized(x)
         loss =self.calc_loss(quantized,x)
+        quantized = x + (quantized - x).detach()
         return loss,quantized.permute(0,4,1,2,3).contiguous(),encodings
 
 

@@ -1,0 +1,87 @@
+[34m[1mwandb[0m: logging graph, to disable use `wandb.watch(log_graph=False)`
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+120000 30000
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+
+  | Name   | Type            | Params | Mode
+---------------------------------------------------
+0 | encode | SVSEncoder_ver2 | 25.4 K | train
+1 | decode | SVSDecoder_ver2 | 93.9 K | train
+2 | vq     | VectorQuantizer | 512    | train
+---------------------------------------------------
+119 K     Trainable params
+0         Non-trainable params
+119 K     Total params
+0.479     Total estimated model params size (MB)
+Sanity Checking DataLoader 0:   0%|                                                                                                                                                                     | 0/2 [00:00<?, ?it/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 92, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 89, in main
+[rank0]:     trainer.fit(model,datamodule=dataloader)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 543, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 43, in _call_and_handle_interrupt
+[rank0]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank0]:     return function(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 579, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=ckpt_path)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 986, in _run
+[rank0]:     results = self._run_stage()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 1028, in _run_stage
+[rank0]:     self._run_sanity_check()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 1057, in _run_sanity_check
+[rank0]:     val_loop.run()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/utilities.py", line 182, in _decorator
+[rank0]:     return loop_run(self, *args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 135, in run
+[rank0]:     self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 396, in _evaluation_step
+[rank0]:     output = call._call_strategy_hook(trainer, hook_name, *step_args)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 311, in _call_strategy_hook
+[rank0]:     output = fn(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/strategies/strategy.py", line 410, in validation_step
+[rank0]:     return self._forward_redirection(self.model, self.lightning_module, "validation_step", *args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/strategies/strategy.py", line 640, in __call__
+[rank0]:     wrapper_output = wrapper_module(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1637, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1464, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1857, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1805, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/lightning/pytorch/strategies/strategy.py", line 633, in wrapped_forward
+[rank0]:     out = method(*_args, **_kwargs)
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/train_vqvae.py", line 39, in validation_step
+[rank0]:     vq_loss,vq_output,emb=self.vq(latent_feature)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1857, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/home/ryuichi/anaconda3/envs/tree/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1805, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/model/svsae.py", line 200, in forward
+[rank0]:     quantized,encodings=self.vector_quantized(x)
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/model/svsae.py", line 175, in vector_quantized
+[rank0]:     distances=self.CalcDist_x2codebook(x)
+[rank0]:   File "/home/ryuichi/tree/TREE_PROJ/model/svsae.py", line 168, in CalcDist_x2codebook
+[rank0]:     distances+=torch.sum(self.embedding.weight**2,dim=1)-2*torch.matmul(x_flat,self.embedding.weight.T)
+[rank0]: RuntimeError: output with shape [2097152, 1] doesn't match the broadcast shape [2097152, 512]
