@@ -41,3 +41,7 @@ data_dir/
 # Python キャッシュ
 __pycache__/
 wandb/
+wandb/
+*.wandb
+__pycache__/
+*.pyc
