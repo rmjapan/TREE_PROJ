@@ -7,7 +7,9 @@ import torch
 
 config=AutoencoderConfig()
 model = VQVAE(config)
-ckpt = "/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=01-train_total_loss=0.0034.ckpt"
+
+ckpt = "/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=03-train_total_loss=0.0030.ckpt"
+# ckpt = "/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=00-train_total_loss=0.0252.ckpt"
 model.load_state_dict(torch.load(ckpt, map_location=torch.device("cuda"))["state_dict"])
 dataload=SvsDataLoader(batch_size=1,sub_dataset=False)
 dataload.setup()
@@ -32,8 +34,10 @@ for x in train_data:
     print(recon_x.shape)
     recon_x=recon_x.squeeze(0).detach().cpu().numpy()
     print(recon_x.shape)
-    visualize_with_timeout4voxel(recon_x,timeout=15)
+    visualize_with_timeout4voxel(recon_x,timeout=15,title=f"recon_x_{count:02d}")
+    print(x.shape)
+    x=x.squeeze(0).detach().cpu().numpy()
+    visualize_with_timeout4voxel(x[0],timeout=15,title=f"x_{count:02d}")
 
-
-    
+#     
     

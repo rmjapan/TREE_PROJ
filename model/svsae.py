@@ -229,8 +229,8 @@ class SVSEncoder(torch.nn.Module):
                 LeakyReLU()
             ),
             nn.Sequential(
-                Conv3d(16, 1, kernel_size=1, stride=1),  # チャネル次元を1に圧縮
-                nn.BatchNorm3d(1),
+                Conv3d(16, config.latent_channels, kernel_size=1, stride=1),  # チャネル次元を1に圧縮
+                nn.BatchNorm3d(config.latent_channels),
                 LeakyReLU()
             )
         )
@@ -245,7 +245,7 @@ class SVSDecoder(torch.nn.Module):
         # 対称的なデコーダ構造
         self.blocks = nn.Sequential(
             nn.Sequential(
-                ConvTranspose3d(1, 32, kernel_size=1, stride=1),
+                ConvTranspose3d(config.latent_channels, 32, kernel_size=1, stride=1),
                 DecoderSEResNetBlock(32, 32),
                 nn.BatchNorm3d(32),
                 LeakyReLU()

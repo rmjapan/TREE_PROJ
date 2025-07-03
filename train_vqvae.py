@@ -63,7 +63,7 @@ def main():
     print(torch.version.cuda)
     print(sys.version)
     dataloader=SvsDataLoader(batch_size=8,sub_dataset=False)
-    config=AutoencoderConfig()
+    config=AutoencoderConfig(latent_channels=2)
     config.device='cuda'
     model=VQVAE(config)
 
