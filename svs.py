@@ -1462,6 +1462,7 @@ def main() -> None:
 
     # os.makedirs(output_base_dir_sketch)
     # os.makedirs(output_base_dir_svs_cgvi)
+    voxel_dim=256
 
     # Acaciaの処理（可視化あり）
     process_tree_category(
@@ -1474,7 +1475,7 @@ def main() -> None:
         make_svs_dataset=True,
         make_sketch_dataset=True,
         visualize_flag=False,
-        voxel_dims=(64,64,64),
+        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         convex_hull_flag=False,
         uwagaki_flag=False
     )
@@ -1490,7 +1491,7 @@ def main() -> None:
         make_svs_dataset=True,
         make_sketch_dataset=True,
         visualize_flag=False,
-        voxel_dims=(64, 64, 64),
+        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         convex_hull_flag=False,
         uwagaki_flag=False
     )
@@ -1505,7 +1506,7 @@ def main() -> None:
         total_count=total_files,
         make_svs_dataset=True,
         make_sketch_dataset=True,
-        voxel_dims=(64, 64, 64),
+        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         visualize_flag=False,
         uwagaki_flag=False
     )
@@ -1518,6 +1519,7 @@ def main() -> None:
         output_sketch_dir=output_base_dir_sketch,
         output_dir=output_base_dir_svs_cgvi,
         total_count=total_files,
+        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         make_svs_dataset=True,
         make_sketch_dataset=True,
         visualize_flag=False,
@@ -1533,7 +1535,7 @@ def main() -> None:
         output_dir=output_base_dir_svs_cgvi,
         total_count=total_files,
         make_svs_dataset=True,
-        voxel_dims=(64, 64, 64),
+        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         make_sketch_dataset=True,
         visualize_flag=False,
         uwagaki_flag=False
