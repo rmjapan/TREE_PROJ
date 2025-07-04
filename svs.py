@@ -96,9 +96,9 @@ F(d) Move Forward by the distance d
             L+=angle
     #度からラジアンに変換
     depth+=1
-    depth_factor=np.random.randint(10, 31)
+    # depth_factor=np.random.randint(10, 31)
 
-    depth=depth*depth_factor
+    # depth=depth*depth_factor
 
     rot_x_rad=math.radians(rot_x)*depth
     rot_y_rad=math.radians(rot_y)*depth
@@ -1436,7 +1436,7 @@ def process_tree_category(
         # 可視化処理（Acaciaはvoxelデータ、その他はグラフを描画）
         if visualize_flag:
             print(f"Visualizing file index: {i}")
-            visualize_with_timeout4voxel(voxel_data)
+            visualize_with_timeout4voxel(voxel_data,timeout=15)
             # plot_trunk_and_mainskelton_graph(graph)
             # plot_graph(graph)
 
@@ -1474,7 +1474,7 @@ def main() -> None:
         total_count=total_files,
         make_svs_dataset=True,
         make_sketch_dataset=True,
-        visualize_flag=False,
+        visualize_flag=True,
         voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         convex_hull_flag=False,
         uwagaki_flag=False
