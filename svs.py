@@ -95,7 +95,7 @@ F(d) Move Forward by the distance d
         elif cmd[0]=="F":
             L+=angle
     #度からラジアンに変換
-    depth+=1
+    depth=1
     # depth_factor=np.random.randint(10, 31)
 
     # depth=depth*depth_factor
