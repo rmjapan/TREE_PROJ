@@ -1446,19 +1446,19 @@ def main() -> None:
 
     # 入力・出力のベースディレクトリ
     input_base_dir: str = "/mnt/nas/rmjapan2000/tree/l-strings"
-    output_base_dir_svd: str = "/home/ryuichi/tree/TREE_PROJ/data_dir/train/svd_0.2"
-    output_base_dir_svs: str = "/home/ryuichi/tree/TREE_PROJ/data_dir/train/svs_0.2"
+    # output_base_dir_svd: str = "/home/ryuichi/tree/TREE_PROJ/data_dir/train/svd_0.2"
+    # output_base_dir_svs: str = "/home/ryuichi/tree/TREE_PROJ/data_dir/train/svs_0.2"
     # output_base_dir_svs_cgvi: str = "/home/ryuichi/tree/TREE_PROJ/data_dir/train/svs_cgvi"
     # output_base_dir_sketch: str = "/home/ryuichi/tree/TREE_PROJ/data_dir/train/sketch_cgvi"
-    output_base_dir_sketch: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/sketch_cgvi"
-    output_base_dir_svs_cgvi: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svs_cgvi"
+    # output_base_dir_sketch: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/sketch_LDM"
+    # output_base_dir_svs_cgvi: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svs_LDM"
 
 
-    output_base_dir_svs_cgvi_256: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svs_cgvi_ver2"
-    output_base_dir_svs_cgvi_256_sketch: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/sketch_cgvi_ver2"
+    output_base_dir_svs: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svs_LDM"
+    output_base_dir_svs_sketch: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/sketch_LDM"
 
-    output_base_dir_svs_cgvi=output_base_dir_svs_cgvi_256
-    output_base_dir_sketch=output_base_dir_svs_cgvi_256_sketch
+    output_base_dir_svs=output_base_dir_svs
+    output_base_dir_sketch=output_base_dir_svs_sketch
 
     # os.makedirs(output_base_dir_sketch)
     # os.makedirs(output_base_dir_svs_cgvi)
@@ -1470,7 +1470,7 @@ def main() -> None:
         file_prefix="Acacia",
         input_base_dir=input_base_dir,
         output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs_cgvi,
+        output_dir=output_base_dir_svs,
         total_count=total_files,
         make_svs_dataset=True,
         make_sketch_dataset=True,
@@ -1486,7 +1486,7 @@ def main() -> None:
         file_prefix="Birch",
         input_base_dir=input_base_dir,
         output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs_cgvi,
+        output_dir=output_base_dir_svs,
         total_count=total_files,
         make_svs_dataset=True,
         make_sketch_dataset=True,
@@ -1502,7 +1502,7 @@ def main() -> None:
         file_prefix="Maple",
         input_base_dir=input_base_dir,
         output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs_cgvi,
+        output_dir=output_base_dir_svs,
         total_count=total_files,
         make_svs_dataset=True,
         make_sketch_dataset=True,
@@ -1517,7 +1517,7 @@ def main() -> None:
         file_prefix="Oak",
         input_base_dir=input_base_dir,
         output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs_cgvi,
+        output_dir=output_base_dir_svs,
         total_count=total_files,
         voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         make_svs_dataset=True,
@@ -1532,7 +1532,7 @@ def main() -> None:
         file_prefix="Pine",
         input_base_dir=input_base_dir,
         output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs_cgvi,
+        output_dir=output_base_dir_svs,
         total_count=total_files,
         make_svs_dataset=True,
         voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
