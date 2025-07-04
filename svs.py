@@ -96,13 +96,10 @@ F(d) Move Forward by the distance d
             L+=angle
     #度からラジアンに変換
     depth+=1
-    depth=depth*20
-    if depth>30:
-        
-        depth=30
-    
-    
-    
+    depth_factor=np.random.randint(10, 31)
+
+    depth=depth*depth_factor
+
     rot_x_rad=math.radians(rot_x)*depth
     rot_y_rad=math.radians(rot_y)*depth
     rot_z_rad=math.radians(rot_z)*depth
@@ -805,7 +802,6 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             pos=np.array([pos_x,pos_y,pos_z])
             r=np.linalg.norm(parent_pos-pos)
             if r<0.2:
-                r
                 leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*200
                 leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*200
                 leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*200
