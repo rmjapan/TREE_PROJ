@@ -26,47 +26,123 @@ def AABB(edge,DG):
     Z_min=z_min-thickness/2-margin
     Z_max=z_max+thickness/2+margin
     return X_min,X_max,Y_min,Y_max,Z_min,Z_max
-    
 def initialize_voxel_data(DG, H=32, W=32, D=32):
-        # ボクセルデータを初期化
-        voxel_data = np.full((H, W, D), -1, dtype=float)
+    # ボクセルデータを初期化
+    voxel_data = np.full((H, W, D), -1, dtype=float)
+    
+    # dammy_root_nodeを検索
+    dammy_root_node = None
+    for node in DG.nodes():
+        if DG.nodes[node]['node'].dammy_root_flag == True:
+            dammy_root_node = DG.nodes[node]['node']
+            break
+    
+    if dammy_root_node is not None:
+        x_center = dammy_root_node.pos.x
+        y_ground = dammy_root_node.pos.y  # Y軸は地面として扱う
+        z_center = dammy_root_node.pos.z
+        print(f"Center set to dammy_root_node: X={x_center}, Y_ground={y_ground}, Z={z_center}")
         
-        # ノードの座標を取得(x, y, z)
+        # dammy_root_nodeから各方向への最大距離を計算
         x_vals = [DG.nodes[node]['node'].pos.x for node in DG.nodes()]
         y_vals = [DG.nodes[node]['node'].pos.y for node in DG.nodes()]
         z_vals = [DG.nodes[node]['node'].pos.z for node in DG.nodes()]
-        # ノードの座標の最小値と最大値を取得
+        
+        x_min_dist = x_center - min(x_vals)
+        x_max_dist = max(x_vals) - x_center
+        y_max_dist = max(y_vals) - y_ground  # Y軸は地面から上方向のみ
+        z_min_dist = z_center - min(z_vals)
+        z_max_dist = max(z_vals) - z_center
+        
+        print(f"x_min_dist: {x_min_dist}, x_max_dist: {x_max_dist}, y_max_dist: {y_max_dist}, z_min_dist: {z_min_dist}, z_max_dist: {z_max_dist}")
+        
+        # 立方体にするため最大距離を採用
+        max_distance = max(x_min_dist, x_max_dist, y_max_dist, z_min_dist, z_max_dist)
+        margin = 5
+        voxel_scale = max_distance * 2 + margin
+        
+        # X,Z軸は中心に、Y軸は地面から開始
+        x_center_final = x_center
+        z_center_final = z_center
+        y_start = y_ground  # Y軸は地面から開始
+        
+    else:
+        # 従来の方法と同じ処理
+        x_vals = [DG.nodes[node]['node'].pos.x for node in DG.nodes()]
+        y_vals = [DG.nodes[node]['node'].pos.y for node in DG.nodes()]
+        z_vals = [DG.nodes[node]['node'].pos.z for node in DG.nodes()]
+        
         x_min, x_max = min(x_vals), max(x_vals)
         y_min, y_max = min(y_vals), max(y_vals)
         z_min, z_max = min(z_vals), max(z_vals)
-        print(f"x_min: {x_min}, x_max: {x_max}, y_min: {y_min}, y_max: {y_max}, z_min: {z_min}, z_max: {z_max}")
         
-        # 配列の中心を計算
-        x_center = (x_max + x_min) / 2
-        y_center = (y_max + y_min) / 2
-        z_center = (z_max + z_min) / 2
+        x_center_final = (x_max + x_min) / 2
+        z_center_final = (z_max + z_min) / 2
+        y_start = y_min  # Y軸は最小値から開始
         
-        # ボクセルスケールとサイズを計算
         max_length = max(x_max - x_min, y_max - y_min, z_max - z_min)
-        margin = 5  # 余裕を持たせる
-        voxel_scale = max_length + margin #立方体の一辺の長さ  
-        voxel_size = voxel_scale / H #ボクセルの一辺の長さ
-        print(voxel_size)
-        voxel_xmin = x_center - voxel_scale / 2 #X軸の最小値
-        voxel_ymin = y_center - voxel_scale / 2 #Y軸の最小値
-        voxel_zmin = z_center - voxel_scale / 2 #Z軸の最小値
+        margin = 5
+        voxel_scale = max_length + margin
+    
+    # 共通の処理
+    voxel_size = voxel_scale / H
+    print(f"voxel_scale: {voxel_scale}, voxel_size: {voxel_size}")
+    
+    # X,Z軸は中心配置、Y軸は地面から開始
+    voxel_xmin = x_center_final - voxel_scale / 2
+    voxel_ymin = y_start-2  # Y軸は地面から開始
+    voxel_zmin = z_center_final - voxel_scale / 2
+    
+    # 座標軸の値を計算
+    x_coords = voxel_xmin + np.arange(H) * voxel_size
+    y_coords = voxel_ymin + np.arange(W) * voxel_size
+    z_coords = voxel_zmin + np.arange(D) * voxel_size
+    
+    # メッシュグリッドを作成
+    X, Y, Z = np.meshgrid(x_coords, y_coords, z_coords, indexing='ij')
+    voxel_positions = np.stack((X, Y, Z), axis=-1)
+    
+    return voxel_data, voxel_positions, x_coords, y_coords, z_coords, voxel_size
+# def initialize_voxel_data(DG, H=32, W=32, D=32):
+#         # ボクセルデータを初期化
+#         voxel_data = np.full((H, W, D), -1, dtype=float)
         
-        # 座標軸の値を計算
-        x_coords = voxel_xmin + np.arange(H) * voxel_size
-        y_coords = voxel_ymin + np.arange(W) * voxel_size
-        z_coords = voxel_zmin + np.arange(D) * voxel_size
+#         # ノードの座標を取得(x, y, z)
+#         x_vals = [DG.nodes[node]['node'].pos.x for node in DG.nodes()]
+#         y_vals = [DG.nodes[node]['node'].pos.y for node in DG.nodes()]
+#         z_vals = [DG.nodes[node]['node'].pos.z for node in DG.nodes()]
+#         # ノードの座標の最小値と最大値を取得
+#         x_min, x_max = min(x_vals), max(x_vals)
+#         y_min, y_max = min(y_vals), max(y_vals)
+#         z_min, z_max = min(z_vals), max(z_vals)
+#         print(f"x_min: {x_min}, x_max: {x_max}, y_min: {y_min}, y_max: {y_max}, z_min: {z_min}, z_max: {z_max}")
         
-        # メッシュグリッドを作成
-        X, Y, Z = np.meshgrid(x_coords, y_coords, z_coords, indexing='ij')
-        #これで、ijkでアクセスできるようになる
-        voxel_positions = np.stack((X, Y, Z), axis=-1)
+#         # 配列の中心を計算
+#         x_center = (x_max + x_min) / 2
+#         y_center = (y_max + y_min) / 2
+#         z_center = (z_max + z_min) / 2
         
-        return voxel_data, voxel_positions, x_coords, y_coords, z_coords, voxel_size
+#         # ボクセルスケールとサイズを計算
+#         max_length = max(x_max - x_min, y_max - y_min, z_max - z_min)
+#         margin = 5  # 余裕を持たせる
+#         voxel_scale = max_length + margin #立方体の一辺の長さ  
+#         voxel_size = voxel_scale / H #ボクセルの一辺の長さ
+#         print(voxel_size)
+#         voxel_xmin = x_center - voxel_scale / 2 #X軸の最小値
+#         voxel_ymin = y_center - voxel_scale / 2 #Y軸の最小値
+#         voxel_zmin = z_center - voxel_scale / 2 #Z軸の最小値
+        
+#         # 座標軸の値を計算
+#         x_coords = voxel_xmin + np.arange(H) * voxel_size
+#         y_coords = voxel_ymin + np.arange(W) * voxel_size
+#         z_coords = voxel_zmin + np.arange(D) * voxel_size
+        
+#         # メッシュグリッドを作成
+#         X, Y, Z = np.meshgrid(x_coords, y_coords, z_coords, indexing='ij')
+#         #これで、ijkでアクセスできるようになる
+#         voxel_positions = np.stack((X, Y, Z), axis=-1)
+        
+#         return voxel_data, voxel_positions, x_coords, y_coords, z_coords, voxel_size
 
 from regex import X
 from scipy.spatial import ConvexHull, Delaunay
@@ -161,7 +237,7 @@ def align_DG_to_Y(DG):
 
 
     # 幹ベクトルをx軸に揃える回転行列
-    rotation_mat = rotation_matrix_from_vectors(trunk_vector, np.array([1,0,0]))
+    rotation_mat = rotation_matrix_from_vectors(trunk_vector, np.array([0, -2, 0]))  # Z軸に揃える
 
     # DGの全ノード座標に回転適用
     for node in DG.nodes():
@@ -179,7 +255,7 @@ def align_DG_to_Y(DG):
 def create_voxel_data(DG, H=32, W=32, D=32):
 
     # ボクセルデータを初期化
-    # DG=align_DG_to_Y(DG)#座標をY軸に沿った幹に揃える
+    DG=align_DG_to_Y(DG)#座標をY軸に沿った幹に揃える
     voxel_data, voxel_positions, x_coords, y_coords, z_coords, voxel_size = initialize_voxel_data(DG, H, W, D)
     
     
