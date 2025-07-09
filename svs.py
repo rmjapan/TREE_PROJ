@@ -39,11 +39,12 @@ class Pos():
         self.y=y
         self.z=z
 class Node():
-    def __init__(self,pos,attr):
+    def __init__(self,pos,attr,root_flag=False,dammy_root_flag=False):
         self.pos=pos
         self.attr=attr
         self.strmatrix=np.identity(4)
-
+        self.root_flag=root_flag
+        self.dammy_root_flag=dammy_root_flag
 def cal_attr(depth):
     if depth==0:#幹
         return 1
@@ -134,15 +135,15 @@ F(d) Move Forward by the distance d
     # 回転行列定義
     R_x = np.array([
         [1, 0,              0,             0],
-        [0, math.cos(rot_x_rad), -math.sin(rot_x_rad), 0],
-        [0, math.sin(rot_x_rad),  math.cos(rot_x_rad), 0],
+        [0, math.cos(rot_x_rad), math.sin(rot_x_rad), 0],
+        [0, -math.sin(rot_x_rad),  math.cos(rot_x_rad), 0],
         [0, 0,              0,             1]
     ])
 
     R_y = np.array([
-        [math.cos(rot_y_rad), 0, math.sin(rot_y_rad), 0],
+        [math.cos(rot_y_rad), 0, -math.sin(rot_y_rad), 0],
         [0,                   1, 0,                  0],
-        [-math.sin(rot_y_rad),0, math.cos(rot_y_rad),0],
+        [math.sin(rot_y_rad),0, math.cos(rot_y_rad),0],
         [0,                   0, 0,                  1]
     ])
 
@@ -211,7 +212,10 @@ def make_edge(DG,current_index,index):
     c=DG.nodes[index]["node"].pos.z-DG.nodes[current_index]["node"].pos.z
     edge=Edge(a,b,c)
     return edge
+
+DAMMY_ROOT_FLAG=True
 def make_svs(l_list,depth,current_index,index,DG,stmatrix):
+    global DAMMY_ROOT_FLAG
     #深さ（枝、幹を分ける存在）
     stack=[]
     #print(f"len(l_list)={len(l_list)}")
@@ -239,7 +243,9 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             if plot_flag and index%10==0:
                 plot_graph(DG)
                 #plot_graph_and_strmatrix(DG)
-            
+            if DAMMY_ROOT_FLAG==True:
+                DG.nodes[index+1]["node"].dammy_root_flag=True
+                DAMMY_ROOT_FLAG=False
             #plot_graph(DG)
         elif l_list[index][0]=="[":
             # print("分岐開始")
@@ -247,17 +253,7 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             # print(f"分岐終了")
   
         elif l_list[index][0]=="]":
-            # print("葉に到達")（元のコード）
-            # DG.nodes[current_index]["node"].attr=0
-            # print(f"current_index={current_index}")
-            # print(f"index={index}")
-            # print(f"current_index+1={current_index+1}")
-            # print(f"index+1={index+1}")
-            
-            
-            #あたらしいコード
-            # DG.add_node(index+1)
-            # DG.add_edge(current_index,index+1)
+  
             parent_list=list(DG.predecessors(current_index))
             parent_id=parent_list[0]
       
@@ -275,20 +271,14 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             pos=np.array([pos_x,pos_y,pos_z])
             r=np.linalg.norm(parent_pos-pos)
             if r<0.2:
-                leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*200
-                leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*200
-                leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*200
+                leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*10
+                leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*10
+                leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*10
             else:
                 leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*1.5
                 leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*1.5
                 leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*1.5
                 
-            # #Nodeの作成
-            # new_node=Node(Pos(leaf_pos_x,leaf_pos_y,leaf_pos_z),0)
-            # DG.nodes[index+1]["node"]=new_node
-            # new_edge=make_edge(DG,current_index,index+1)
-            # DG.edges[(current_index,index+1)]["edge"]=new_edge
-            
             #新しいコードVer２
             #posからleaf_posの角度を０とする.
             # 前提：pos_x, pos_y, pos_z, leaf_pos_x, ... はすでに定義されている
@@ -894,8 +884,8 @@ def initialize_tree() -> Tuple[nx.DiGraph, np.ndarray]:
     Returns:
         Tuple[nx.DiGraph, np.ndarray]: 初期化済みのグラフと4x4の単位行列
     """
-    pos = Pos(128, 0, 0)
-    root = Node(pos, 1)
+    pos = Pos(0, 0, 0)
+    root = Node(pos, 1, True)
     graph = nx.DiGraph()
     graph.add_node(1)
     graph.nodes[1]["node"] = root
@@ -1017,6 +1007,8 @@ def process_tree_category(
 
         # SVS生成とツリー構築
         make_svs(lstring_lines, 0, 1, 0, graph, transform_matrix)
+        global DAMMY_ROOT_FLAG
+        DAMMY_ROOT_FLAG = True  # ダミールートノードを使用するフラグを設定
         make_davinch_tree(graph, (1, 2))
 
         # 必要に応じてスケッチデータセットの生成
@@ -1150,7 +1142,7 @@ def main() -> None:
         total_count=total_files,
         make_svs_dataset=True,
         make_sketch_dataset=True,
-        visualize_flag=False,
+        visualize_flag=True,
         voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         convex_hull_flag=False,
         uwagaki_flag=False

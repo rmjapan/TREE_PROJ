@@ -39,6 +39,7 @@ def initialize_voxel_data(DG, H=32, W=32, D=32):
         x_min, x_max = min(x_vals), max(x_vals)
         y_min, y_max = min(y_vals), max(y_vals)
         z_min, z_max = min(z_vals), max(z_vals)
+        print(f"x_min: {x_min}, x_max: {x_max}, y_min: {y_min}, y_max: {y_max}, z_min: {z_min}, z_max: {z_max}")
         
         # 配列の中心を計算
         x_center = (x_max + x_min) / 2
@@ -141,6 +142,10 @@ def align_DG_to_Y(DG):
 
     root_pos_x = trunk_positions[root_idx_x]
     tip_pos_x = trunk_positions[tip_idx_x]
+    
+    print(f"root_pos_z: {root_pos_z}, tip_pos_z: {tip_pos_z}"
+          f"\nroot_pos_y: {root_pos_y}, tip_pos_y: {tip_pos_y}"
+          f"\nroot_pos_x: {root_pos_x}, tip_pos_x: {tip_pos_x}")
 
     # 幹ベクトルを求める
     trunk_norm_z = np.linalg.norm(tip_pos_z - root_pos_z)
@@ -174,11 +179,13 @@ def align_DG_to_Y(DG):
 def create_voxel_data(DG, H=32, W=32, D=32):
 
     # ボクセルデータを初期化
-    DG=align_DG_to_Y(DG)#座標をY軸に沿った幹に揃える
+    # DG=align_DG_to_Y(DG)#座標をY軸に沿った幹に揃える
     voxel_data, voxel_positions, x_coords, y_coords, z_coords, voxel_size = initialize_voxel_data(DG, H, W, D)
     
     
     for edge in DG.edges():
+        if DG.nodes[edge[0]]['node'].root_flag==True:
+            continue
         start_node = DG.nodes[edge[0]]['node']#エッジの始点
         end_node = DG.nodes[edge[1]]['node']#エッジの終点
         thickness = DG.edges[edge]['edge'].thickness#エッジの太さ
@@ -186,9 +193,9 @@ def create_voxel_data(DG, H=32, W=32, D=32):
         if start_node.attr == 1 and end_node.attr == 1:
             thickness += voxel_size*1
         if start_node.attr == 0.5 and end_node.attr == 0.5:
-            thickness += voxel_size*2
+            thickness += voxel_size*1
         if start_node.attr == 0.5 and end_node.attr == 0:
-            thickness += voxel_size*3
+            thickness += voxel_size*1
         
         #エッジ内に含まれる可能性のあるボクセルの範囲を数値で計算（AABB）
         X_min,X_max,Y_min,Y_max,Z_min,Z_max=AABB(edge,DG)
@@ -217,8 +224,9 @@ def create_voxel_data(DG, H=32, W=32, D=32):
             value=0
 
         # 球を両端に追加
-        draw_sphere(start_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
-        draw_sphere(end_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
+        if DG.nodes[edge[0]]['node'].dammy_root_flag==False:
+            draw_sphere(start_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
+            draw_sphere(end_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
 
     
       
