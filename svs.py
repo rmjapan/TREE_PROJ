@@ -1020,7 +1020,20 @@ def process_tree_category(
         #     plotter.show(screenshot="tree.png")
 
         # ボクセルデータの生成
-        voxel_data = create_voxel_data(graph, *voxel_dims)
+        
+        if tree_folder == "AcaciaClustered":
+            trunk_thick=3
+            branch_thick=2
+            leaf_thick=100
+        elif tree_folder == "BirchClustered":
+            trunk_thick=3
+            branch_thick=2
+            leaf_thick=1
+        else:
+            trunk_thick=1
+            branch_thick=1
+            leaf_thick=1
+        voxel_data = create_voxel_data(graph, *voxel_dims, trunk_thick=trunk_thick, branch_thick=branch_thick, leaf_thick=leaf_thick)
 
         if make_sketch_dataset:
         
@@ -1117,20 +1130,20 @@ def main() -> None:
     voxel_dim=256
 
     # Acaciaの処理（可視化あり）
-    process_tree_category(
-        tree_folder="AcaciaClustered",
-        file_prefix="Acacia",
-        input_base_dir=input_base_dir,
-        output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs,
-        total_count=total_files,
-        make_svs_dataset=True,
-        make_sketch_dataset=True,
-        visualize_flag=True,
-        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
-        convex_hull_flag=False,
-        uwagaki_flag=False
-    )
+    # process_tree_category(
+    #     tree_folder="AcaciaClustered",
+    #     file_prefix="Acacia",
+    #     input_base_dir=input_base_dir,
+    #     output_sketch_dir=output_base_dir_sketch,
+    #     output_dir=output_base_dir_svs,
+    #     total_count=total_files,
+    #     make_svs_dataset=True,
+    #     make_sketch_dataset=True,
+    #     visualize_flag=True,
+    #     voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
+    #     convex_hull_flag=False,
+    #     uwagaki_flag=False
+    # )
 
     # Birchの処理（可視化なし）
     process_tree_category(
