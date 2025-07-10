@@ -219,9 +219,9 @@ def align_DG_to_Y(DG):
     root_pos_x = trunk_positions[root_idx_x]
     tip_pos_x = trunk_positions[tip_idx_x]
     
-    print(f"root_pos_z: {root_pos_z}, tip_pos_z: {tip_pos_z}"
-          f"\nroot_pos_y: {root_pos_y}, tip_pos_y: {tip_pos_y}"
-          f"\nroot_pos_x: {root_pos_x}, tip_pos_x: {tip_pos_x}")
+    # print(f"root_pos_z: {root_pos_z}, tip_pos_z: {tip_pos_z}"
+    #       f"\nroot_pos_y: {root_pos_y}, tip_pos_y: {tip_pos_y}"
+    #       f"\nroot_pos_x: {root_pos_x}, tip_pos_x: {tip_pos_x}")
 
     # 幹ベクトルを求める
     trunk_norm_z = np.linalg.norm(tip_pos_z - root_pos_z)
@@ -232,10 +232,13 @@ def align_DG_to_Y(DG):
     idx = np.argmax(trunk_norms)
     trunk_vectors = [tip_pos_x - root_pos_x, tip_pos_y - root_pos_y, tip_pos_z - root_pos_z]
     axis_names = ["X軸", "Y軸", "Z軸"]
-    print(f"{axis_names[idx]}に沿った幹")
+    # print(f"{axis_names[idx]}に沿った幹")
     trunk_vector = trunk_vectors[idx]
 
-
+    print(f"trunk_vector: {trunk_vector}")
+    
+    if trunk_vector[1] < 0:
+        trunk_vector = -trunk_vector
     # 幹ベクトルをx軸に揃える回転行列
     rotation_mat = rotation_matrix_from_vectors(trunk_vector, np.array([0, -2, 0]))  # Z軸に揃える
 
