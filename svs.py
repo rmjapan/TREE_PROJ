@@ -271,9 +271,9 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             pos=np.array([pos_x,pos_y,pos_z])
             r=np.linalg.norm(parent_pos-pos)
             if r<0.2:
-                leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*10
-                leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*10
-                leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*10
+                leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*200
+                leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*200
+                leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*200
             else:
                 leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*1.5
                 leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*1.5
