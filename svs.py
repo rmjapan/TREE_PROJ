@@ -95,43 +95,10 @@ F(d) Move Forward by the distance d
             rot_z-=angle#Roll Right
         elif cmd[0]=="F":
             L=angle
-    #すでにラジアン
-    # depth+=1
-    # depth=depth*20
-    # if depth>30:    
-    #     depth=30
-    # rot_x_rad=math.radians(rot_x)*depth
-    # rot_y_rad=math.radians(rot_y)*depth
-    # rot_z_rad=math.radians(rot_z)*depth
+
     rot_x_rad=rot_x
     rot_y_rad=rot_y
     rot_z_rad=rot_z
-    
-    # rot_x_rad=rot_y
-    # rot_y_rad=rot_x
-    # rot_z_rad=rot_z
-    
-    # rot_x_rad=rot_y
-    # rot_y_rad=rot_z
-    # rot_z_rad=rot_x
-    
-    # rot_x_rad=rot_z
-    # rot_y_rad=rot_x
-    # rot_z_rad=rot_y
-    
-    # rot_x_rad=rot_z
-    # rot_y_rad=rot_y
-    # rot_z_rad=rot_x
-    
-    # rot_x_rad=rot_x
-    # rot_y_rad=rot_z
-    # rot_z_rad=rot_y
-    
-    
-
-    # print(f"rot_x={rot_x},rot_y={rot_y},rot_z={rot_z},L={L}")
-    
-
     # 回転行列定義
     R_x = np.array([
         [1, 0,              0,             0],
@@ -214,7 +181,7 @@ def make_edge(DG,current_index,index):
     return edge
 
 DAMMY_ROOT_FLAG=True
-def make_svs(l_list,depth,current_index,index,DG,stmatrix):
+def make_svs(l_list,depth,current_index,index,DG,stmatrix,tree_type:str):
     global DAMMY_ROOT_FLAG
     #深さ（枝、幹を分ける存在）
     stack=[]
@@ -249,7 +216,7 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             #plot_graph(DG)
         elif l_list[index][0]=="[":
             # print("分岐開始")
-            index=make_svs(l_list,depth+1,current_index,index+1,DG,stmatrix)
+            index=make_svs(l_list,depth+1,current_index,index+1,DG,stmatrix,tree_type)
             # print(f"分岐終了")
   
         elif l_list[index][0]=="]":
@@ -270,10 +237,16 @@ def make_svs(l_list,depth,current_index,index,DG,stmatrix):
             parent_pos=np.array([parent_pos_x,parent_pos_y,parent_pos_z])
             pos=np.array([pos_x,pos_y,pos_z])
             r=np.linalg.norm(parent_pos-pos)
+            
             if r<0.2:
-                leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*200
-                leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*200
-                leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*200
+                if tree_type=="MapleClustered" or tree_type=="PineClustered":
+                    leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*10
+                    leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*10
+                    leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*10
+                else:
+                    leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*200
+                    leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*200
+                    leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*200
             else:
                 leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*1.5
                 leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*1.5
@@ -1006,7 +979,7 @@ def process_tree_category(
             print("開始")
 
         # SVS生成とツリー構築
-        make_svs(lstring_lines, 0, 1, 0, graph, transform_matrix)
+        make_svs(lstring_lines, 0, 1, 0, graph, transform_matrix,tree_type=tree_folder)
         global DAMMY_ROOT_FLAG
         DAMMY_ROOT_FLAG = True  # ダミールートノードを使用するフラグを設定
         make_davinch_tree(graph, (1, 2))
@@ -1146,50 +1119,50 @@ def main() -> None:
     # )
 
     # Birchの処理（可視化なし）
-    process_tree_category(
-        tree_folder="BirchClustered",
-        file_prefix="Birch",
-        input_base_dir=input_base_dir,
-        output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs,
-        total_count=total_files,
-        make_svs_dataset=True,
-        make_sketch_dataset=True,
-        visualize_flag=True,
-        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
-        convex_hull_flag=False,
-        uwagaki_flag=False
-    )
+    # process_tree_category(
+    #     tree_folder="BirchClustered",
+    #     file_prefix="Birch",
+    #     input_base_dir=input_base_dir,
+    #     output_sketch_dir=output_base_dir_sketch,
+    #     output_dir=output_base_dir_svs,
+    #     total_count=total_files,
+    #     make_svs_dataset=True,
+    #     make_sketch_dataset=True,
+    #     visualize_flag=True,
+    #     voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
+    #     convex_hull_flag=False,
+    #     uwagaki_flag=False
+    # )
 
     # Mapleの処理（可視化なし）
-    process_tree_category(
-        tree_folder="MapleClustered",
-        file_prefix="Maple",
-        input_base_dir=input_base_dir,
-        output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs,
-        total_count=total_files,
-        make_svs_dataset=True,
-        make_sketch_dataset=True,
-        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
-        visualize_flag=False,
-        uwagaki_flag=False
-    )
+    # process_tree_category(
+    #     tree_folder="MapleClustered",
+    #     file_prefix="Maple",
+    #     input_base_dir=input_base_dir,
+    #     output_sketch_dir=output_base_dir_sketch,
+    #     output_dir=output_base_dir_svs,
+    #     total_count=total_files,
+    #     make_svs_dataset=True,
+    #     make_sketch_dataset=True,
+    #     voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
+    #     visualize_flag=True,
+    #     uwagaki_flag=False
+    # )
 
     # # Oakの処理（可視化なし）
-    process_tree_category(
-        tree_folder="OakClustered",
-        file_prefix="Oak",
-        input_base_dir=input_base_dir,
-        output_sketch_dir=output_base_dir_sketch,
-        output_dir=output_base_dir_svs,
-        total_count=total_files,
-        voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
-        make_svs_dataset=True,
-        make_sketch_dataset=True,
-        visualize_flag=False,
-        uwagaki_flag=False
-    )
+    # process_tree_category(
+    #     tree_folder="OakClustered",
+    #     file_prefix="Oak",
+    #     input_base_dir=input_base_dir,
+    #     output_sketch_dir=output_base_dir_sketch,
+    #     output_dir=output_base_dir_svs,
+    #     total_count=total_files,
+    #     voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
+    #     make_svs_dataset=True,
+    #     make_sketch_dataset=True,
+    #     visualize_flag=True,
+    #     uwagaki_flag=False
+    # )
 
     # Pineの処理（出力ディレクトリがsvs_0.2、可視化なし）
     process_tree_category(
@@ -1202,7 +1175,7 @@ def main() -> None:
         make_svs_dataset=True,
         voxel_dims=(voxel_dim, voxel_dim, voxel_dim),
         make_sketch_dataset=True,
-        visualize_flag=False,
+        visualize_flag=True,
         uwagaki_flag=False
     )
 

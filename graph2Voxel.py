@@ -90,7 +90,7 @@ def initialize_voxel_data(DG, H=32, W=32, D=32):
     
     # X,Z軸は中心配置、Y軸は地面から開始
     voxel_xmin = x_center_final - voxel_scale / 2
-    voxel_ymin = y_start-2  # Y軸は地面から開始
+    voxel_ymin = y_start-10  # Y軸は地面から開始
     voxel_zmin = z_center_final - voxel_scale / 2
     
     # 座標軸の値を計算
@@ -255,7 +255,7 @@ def align_DG_to_Y(DG):
 
 
 
-def create_voxel_data(DG, H=32, W=32, D=32):
+def create_voxel_data(DG, H=32, W=32, D=32,trunk_thick=3, branch_thick=2, leaf_thick=100):
 
     # ボクセルデータを初期化
     DG=align_DG_to_Y(DG)#座標をY軸に沿った幹に揃える
@@ -270,12 +270,12 @@ def create_voxel_data(DG, H=32, W=32, D=32):
         thickness = DG.edges[edge]['edge'].thickness#エッジの太さ
         #幹の場合はエッジの太さを＋ボクセルサイズ
         if start_node.attr == 1 and end_node.attr == 1:
-            thickness += voxel_size*1
+            thickness += voxel_size*trunk_thick
         if start_node.attr == 0.5 and end_node.attr == 0.5:
-            thickness += voxel_size*1
+            thickness += voxel_size*branch_thick
         if start_node.attr == 0.5 and end_node.attr == 0:
-            thickness += voxel_size*1
-        
+            thickness += voxel_size*leaf_thick
+
         #エッジ内に含まれる可能性のあるボクセルの範囲を数値で計算（AABB）
         X_min,X_max,Y_min,Y_max,Z_min,Z_max=AABB(edge,DG)
         # エッジの範囲をIndexで取得
@@ -304,7 +304,7 @@ def create_voxel_data(DG, H=32, W=32, D=32):
 
         # 球を両端に追加
         if DG.nodes[edge[0]]['node'].dammy_root_flag==False:
-            draw_sphere(start_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
+            # draw_sphere(start_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
             draw_sphere(end_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
 
     
