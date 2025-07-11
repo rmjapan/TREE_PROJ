@@ -4,8 +4,6 @@ import networkx as nx
 import math
 import os
 from estimate_thickness import make_davinch_tree
-
-
 os.environ["OMP_NUM_THREADS"] = "2"
 import matplotlib.pyplot as plt
 from matplotlib import cm, figure
@@ -24,7 +22,6 @@ from graph2Voxel import create_voxel_data
 from filecount import last_file_num
 from visualize_func import visualize_voxel_data,visualize_with_timeout4voxel
 import random
-
 class Edge():
     def __init__(self,a,b,c):
         self.a=a
@@ -357,176 +354,6 @@ def voxel_distribution(voxel_data):
     print(f"result_branch:{result_branch/element_num*100}%")#0.001%
     print(f"result_leaf:{result_leaf/element_num*100}%")#0.0001%
     
-    
-    
-    
-    
-# def make_svs(l_list,depth,current_index,index,DG,stmatrix):
-#     #深さ（枝、幹を分ける存在）
-#     stack=[]
-#     #print(f"len(l_list)={len(l_list)}")
-#     while current_index<len(l_list) and index<len(l_list):
-#         #print(f"current_index={current_index}")
-    
-#         if l_list[index][0]=="F":
-#             #print(f"新しいノードを作成する:親{current_index}->子{index+1}")
-#             DG.add_node(index+1)
-#             DG.add_edge(current_index,index+1)
-#             stack.append(l_list[index])#Fをスタックに追加
-            
-#             ##頂点属性を設定
-        
-#             new_node,stmatrix=make_node(depth,stack,DG.nodes[current_index]["node"].pos,stmatrix)
-#             DG.nodes[index+1]["node"]=new_node
-            
-#             ##辺属性を設定
-#             new_edge=make_edge(DG,current_index,index+1)
-#             DG.edges[(current_index,index+1)]["edge"]=new_edge
-#             #新しいノードをCurrentNodeにする
-#             current_index=index+1
-#             stack.clear()
-#             plot_flag=False
-#             if plot_flag and index%10==0:
-#                 plot_graph(DG)
-#                 #plot_graph_and_strmatrix(DG)
-            
-#             #plot_graph(DG)
-#         elif l_list[index][0]=="[":
-#             # print("分岐開始")
-#             index=make_svs(l_list,depth+1,current_index,index+1,DG,stmatrix)
-#             # print(f"分岐終了")
-  
-#         elif l_list[index][0]=="]":
-#             # print("葉に到達")（元のコード）
-#             # DG.nodes[current_index]["node"].attr=0
-#             # print(f"current_index={current_index}")
-#             # print(f"index={index}")
-#             # print(f"current_index+1={current_index+1}")
-#             # print(f"index+1={index+1}")
-            
-            
-#             #あたらしいコード
-#             # DG.add_node(index+1)
-#             # DG.add_edge(current_index,index+1)
-#             parent_list=list(DG.predecessors(current_index))
-#             parent_id=parent_list[0]
-      
-#             parent_pos_x=DG.nodes[parent_id]["node"].pos.x
-#             parent_pos_y=DG.nodes[parent_id]["node"].pos.y
-#             parent_pos_z=DG.nodes[parent_id]["node"].pos.z
-            
-            
-#             #葉の位置を計
-#             pos_x=DG.nodes[current_index]["node"].pos.x
-#             pos_y=DG.nodes[current_index]["node"].pos.y
-#             pos_z=DG.nodes[current_index]["node"].pos.z
-            
-#             parent_pos=np.array([parent_pos_x,parent_pos_y,parent_pos_z])
-#             pos=np.array([pos_x,pos_y,pos_z])
-#             r=np.linalg.norm(parent_pos-pos)
-#             if r<0.2:
-#                 leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*200
-#                 leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*200
-#                 leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*200
-#             else:
-#                 leaf_pos_x=parent_pos_x+(pos_x-parent_pos_x)*1.5
-#                 leaf_pos_y=parent_pos_y+(pos_y-parent_pos_y)*1.5
-#                 leaf_pos_z=parent_pos_z+(pos_z-parent_pos_z)*1.5
-                
-#             # #Nodeの作成
-#             # new_node=Node(Pos(leaf_pos_x,leaf_pos_y,leaf_pos_z),0)
-#             # DG.nodes[index+1]["node"]=new_node
-#             # new_edge=make_edge(DG,current_index,index+1)
-#             # DG.edges[(current_index,index+1)]["edge"]=new_edge
-            
-#             #新しいコードVer２
-#             #posからleaf_posの角度を０とする.
-#             # 前提：pos_x, pos_y, pos_z, leaf_pos_x, ... はすでに定義されている
-#             pos = np.stack([pos_x, pos_y, pos_z])
-#             leaf_pos = np.stack([leaf_pos_x, leaf_pos_y, leaf_pos_z])
-#             r = np.linalg.norm(pos - leaf_pos)+0.01
-#             zero_dir = (leaf_pos - pos) / r
-#             point_num = 4
-
-#             # サンプリング半径（体積均一にするため立方根を使う）
-#             radii = r * np.cbrt(np.random.rand(point_num))
-
-#             # -60度〜60度のランダム角（ラジアン）
-#             angles = np.radians(np.random.uniform(-15, 15, point_num))
-
-#             # 基準ベクトル zero_dir を z軸に一致させる回転を求める
-#             z_axis = np.array([0.0, 0.0, 1.0])
-#             v = np.cross(z_axis, zero_dir)
-#             s = np.linalg.norm(v)
-#             c = np.dot(z_axis, zero_dir)
-#             if s < 1e-8:
-#                 R_align = np.eye(3) if c > 0 else -np.eye(3)
-#             else:
-#                 vx = np.array([[0, -v[2], v[1]],
-#                             [v[2], 0, -v[0]],
-#                             [-v[1], v[0], 0]])
-#                 R_align = np.eye(3) + vx + vx @ vx * ((1 - c) / (s ** 2))
-
-#             samples = []
-#             for radius, theta in zip(radii, angles):
-#                 # z軸周りに回転
-#                 rot_z = np.array([
-#                     [np.cos(theta), -np.sin(theta), 0],
-#                     [np.sin(theta),  np.cos(theta), 0],
-#                     [0, 0, 1]
-#                 ])
-#                 # z軸 → zero_dir に回転したあと点を回して、元の中心に移動
-#                 direction = R_align @ rot_z @ z_axis
-#                 sample = pos + radius * direction
-#                 samples.append(sample)
-
-#             samples = np.array(samples)
-
-#             for i,sample in enumerate(samples):
-                
-#                 # 現在のposとsample（葉の位置）の中間点を計算
-#                 branch_pos = (pos + sample) / 2
-                
-#                 # ノードのキーを設定
-#                 branch_key = index + len(l_list) + i + 1
-#                 leaf_key = branch_key*2
-                
-#                 # ノードを追加
-#                 DG.add_node(branch_key)
-#                 DG.add_node(leaf_key)
-                
-#                 # エッジを追加（current_index → branch_key → leaf_key）
-#                 DG.add_edge(current_index, branch_key)
-#                 DG.add_edge(branch_key, leaf_key)
-                
-#                 # 枝ノードを作成（属性は0.5=枝）
-#                 branch_node = Node(Pos(branch_pos[0], branch_pos[1], branch_pos[2]), 0.5)
-#                 DG.nodes[branch_key]["node"] = branch_node
-                
-#                 # 葉ノードを作成（属性は0=葉）
-#                 leaf_node = Node(Pos(sample[0], sample[1], sample[2]), 0)
-#                 DG.nodes[leaf_key]["node"] = leaf_node
-                
-#                 # エッジを作成
-#                 branch_edge = make_edge(DG, current_index, branch_key)
-#                 DG.edges[(current_index, branch_key)]["edge"] = branch_edge
-                
-#                 leaf_edge = make_edge(DG, branch_key, leaf_key)
-#                 DG.edges[(branch_key, leaf_key)]["edge"] = leaf_edge
-
-#             return index
-
-            
-            
-            
-            
-            
-           
-#         else:
-#             # print(f"コマンドをスタックに追加:{l_list[index]}"z
-#             stack.append(l_list[index])
-#         index+=1
-#     return index
 
 def resize_with_padding(img, target_size):
     import cv2
@@ -1066,11 +893,20 @@ def process_tree_category(
         if make_svs_dataset:
             # 4方向分保存するために、output_dirをBase_dirにして、4方向分のディレクトリを作成して保存
             directions = ["front", "back", "left", "right"]
+            dir_path="NULL"
             for direction in directions:
                 dir_path = os.path.join(output_dir, direction)
                 os.makedirs(dir_path, exist_ok=True)
+            
                 save_npzForm(voxel_data, dir_path, i)
-
+            from edit_xyz import convert_npz_to_xyz
+            dir_path = os.path.join(dir_path, f"svs_{i}.npz")
+            output_xyz_dir = os.path.join(output_dir, "xyz")
+            print(f"dir_path={dir_path}, output_xyz_dir={output_xyz_dir}")
+            convert_npz_to_xyz(
+                dir_path,
+                output_xyz_dir,
+            )
         # 可視化処理（Acaciaはvoxelデータ、その他はグラフを描画）
         if visualize_flag:
             print(f"Visualizing file index: {i}")

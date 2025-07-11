@@ -298,6 +298,7 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
         0.5: (205, 133, 63),    # 枝：薄い茶色
         0.0: (0, 255, 0),      # 葉: 明るい緑
     }
+    print(f"filename: {filename}")
 
     try:
         # データの前処理
@@ -310,7 +311,21 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
                 sparse_matrix = csr_matrix((voxel["data"], voxel["indices"], voxel["indptr"]), 
                                          shape=tuple(voxel["shape"]))
                 voxel = sparse_matrix.toarray()
+                voxel = np.where(
+                        voxel==2,0.5,  # 枝を0.5に変換
+                        np.where(
+                            voxel==3,0,  # 葉を0に変換
+                            np.where(
+                                voxel==0,-1.0,  # 空白を-1.0に変換
+                                voxel  # その他の値はそのまま
+                            )
+                        )
+                    )
         
+
+        print(f"voxel.shape: {voxel.shape}")
+        voxel=voxel.reshape(voxel.shape[0], voxel.shape[0], voxel.shape[0])  # 3次元配列に変形
+        print(f"voxel.shape after reshape: {voxel.shape}")
         if hasattr(voxel, "detach"):
             voxel = voxel.detach().cpu().numpy()
         
@@ -323,7 +338,7 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
 
         # 出力ディレクトリの作成
         os.makedirs(os.path.dirname(os.path.abspath(filename)), exist_ok=True)
-
+        print(f"file path: {os.path.dirname(os.path.abspath(filename))}")
         # 空でないボクセルのみを抽出
         valid_mask = (voxel != -1.0)  # 空白でないボクセルのマスク
         valid_indices = np.where(valid_mask)
@@ -343,13 +358,405 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
                 r, g, b = COLOR_MAP[v]
                 # .xyz形式: x y z r g b
                 # f.write(f"{i} {j} {k} {r} {g} {b}\n")
-                f.write(f"{j} {i} {k} {r} {g} {b}\n")
-
-
+                # f.write(f"{j} {k} {i} {r} {g} {b}\n")
+                # f.write(f"{k} {i} {j} {r} {g} {b}\n")
+                # f.write(f"{i} {k} {j} {r} {g} {b}\n")
+                f.write(f"{k} {j} {i} {r} {g} {b}\n")
         print(f"Voxel data successfully written to {filename}")
 
     except Exception as e:
         raise IOError(f"Failed to process voxel data: {str(e)}")
+# センチメートルからポイントに変換する関数
+def cm_to_pt(linewidth_cm, dpi=100):
+    return linewidth_cm * dpi / 2.54
+def plot_trunk_and_mainskelton_graph(DG):
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d import Axes3D
+    
+    # Extract node positions
+    node_positions = {node: (DG.nodes[node]['node'].pos.x, 
+                             DG.nodes[node]['node'].pos.y, 
+                             DG.nodes[node]['node'].pos.z) 
+                      for node in DG.nodes}
+    attr_positions = {node: DG.nodes[node]['node'].attr
+                      for node in DG.nodes}
+    edge_thickness = {(u, v): DG[u][v]['edge'].thickness
+                      for u, v in DG.edges()}
+    # Create a 3D plot
+    fig = plt.figure(figsize=(10,10), dpi=100)
+    ax = fig.add_subplot(111, projection='3d')
+
+    # for node, (x, y, z) in node_positions.items():  
+    #     if  attr_positions[node]==1:#Trunk(幹＋深さ１にある枝)
+    #         ax.scatter(x, y, z, c='brown', marker='o',s=10)
+      
+    
+    # Plot the edges
+    for (u, v) in DG.edges():
+        x = [node_positions[u][0], node_positions[v][0]]
+        y = [node_positions[u][1], node_positions[v][1]]
+        z = [node_positions[u][2], node_positions[v][2]]
+        thickness = edge_thickness[(u, v)]
+        thickness = cm_to_pt(thickness)
+        if attr_positions[u] == 1 and attr_positions[v] == 1:
+            ax.plot(x, y, z, c="#a65628", linewidth=thickness)
+        # elif attr_positions[u] == 0.5 and attr_positions[v] == 0:
+        #     ax.plot(x, y, z, c="green", linewidth=thickness)
+        # else:
+        #     ax.plot(x, y, z, c='#a65628', linewidth=thickness)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_xlim(-4, 4)
+    ax.set_ylim(-4, 4)
+    ax.view_init(elev=0, azim=90)
+    plt.gca().set_aspect('equal', adjustable='box')
+    
+    plt.show()
+def plot_graph(DG):
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d import Axes3D
+    import numpy as np
+    from matplotlib import cm
+    # Extract node positions
+    node_positions = {node: (DG.nodes[node]['node'].pos.x, 
+                             DG.nodes[node]['node'].pos.y, 
+                             DG.nodes[node]['node'].pos.z) 
+                      for node in DG.nodes}
+    attr_positions = {node: DG.nodes[node]['node'].attr
+                      for node in DG.nodes}
+    edge_thickness = {(u, v): DG[u][v]['edge'].thickness
+                      for u, v in DG.edges()}
+    # Create a 3D plot
+    fig = plt.figure(figsize=(10,10), dpi=100)
+    ax = fig.add_subplot(111, projection='3d')
+
+    for node, (x, y, z) in node_positions.items():  
+        if attr_positions[node] ==0:
+            #葉
+            ax.scatter(x, y, z, c='green', marker='o',s=10)
+        elif attr_positions[node]==1:#枝
+            ax.scatter(x, y, z, c='brown', marker='o',s=10)
+        else:
+            ax.scatter(x, y, z, c='yellow', marker='o',s=10)
+    
+    # Plot the edges
+    for (u, v) in DG.edges():
+        x = [node_positions[u][0], node_positions[v][0]]
+        y = [node_positions[u][1], node_positions[v][1]]
+        z = [node_positions[u][2], node_positions[v][2]]
+        thickness = edge_thickness[(u, v)]
+        thickness = cm_to_pt(thickness)
+        if attr_positions[u] == 1 and attr_positions[v] == 1:
+            ax.plot(x, y, z, c="#a65628", linewidth=thickness)
+        elif attr_positions[u] == 0.5 and attr_positions[v] == 0:
+            ax.plot(x, y, z, c="green", linewidth=thickness)
+        else:
+            ax.plot(x, y, z, c='#a65628', linewidth=thickness)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_xlim(-4, 4)
+    ax.set_ylim(-4, 4)
+    ax.view_init(elev=0, azim=90)
+    plt.gca().set_aspect('equal', adjustable='box')
+    
+    plt.show()
+
+
+# 凸包と枝をMixして描画する関数
+def mix_branches_and_leaves(plotter, DG, clusterd_leaf_points, num_cluster):
+    from scipy.spatial import ConvexHull
+    import numpy as np
+    import pyvista as pv
+    from matplotlib import cm
+    # 凸包（葉）を描画
+    colors = cm.rainbow(np.linspace(0, 1, num_cluster))
+    for i in range(num_cluster):
+        leaf_points = np.array(clusterd_leaf_points[i])
+        leaf_hull = ConvexHull(leaf_points)
+        leaf_mesh = []
+        for simplex in leaf_hull.simplices:
+            simplex = np.append(simplex, simplex[0])
+            leaf_mesh.append(leaf_points[simplex])
+        
+
+        # PyVista用に四面体分割
+        leaf_mesh=np.array(leaf_mesh)
+        leaf_mesh=leaf_mesh.reshape(-1,3)
+        
+        
+        leaf_mesh = pv.PolyData(leaf_mesh).delaunay_3d()
+
+        # 葉をプロット
+        plotter.add_mesh(leaf_mesh, color="green", opacity=1.0)
+
+    # 枝を描画
+    node_positions = {node: (DG.nodes[node]['node'].pos.x,
+                             DG.nodes[node]['node'].pos.y,
+                             DG.nodes[node]['node'].pos.z)
+                      for node in DG.nodes}
+    edge_thickness = {(u, v): DG[u][v]['edge'].thickness for u, v in DG.edges()}
+    attr = {node: DG.nodes[node]['node'].attr for node in DG.nodes}
+
+    for (u, v) in DG.edges():
+        start = node_positions[u]
+        end = node_positions[v]
+        thickness = edge_thickness[(u, v)]
+        
+        line = pv.Line(start, end, resolution=10)
+        if attr[u] == 1 and attr[v] == 1:
+            plotter.add_mesh(line, color="#a65628", line_width=cm_to_pt(thickness))
+
+
+#
+def convex_hull_leaf_and_branch(DG):
+    from scipy.spatial import ConvexHull
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d import Axes3D
+
+    leaf_points=[]
+    branch_points=[]
+    leaf_and_brunch_points=[]
+    for node in DG.nodes():
+        if DG.nodes[node]['node'].attr==0:
+            pos=DG.nodes[node]['node'].pos
+            np_pos=np.array([pos.x,pos.y,pos.z])
+            leaf_points.append(np_pos)
+            
+        elif DG.nodes[node]['node'].attr==1:#Trunk
+            pos=DG.nodes[node]['node'].pos
+            np_pos=np.array([pos.x,pos.y,pos.z])
+            branch_points.append(np_pos)
+    leaf_and_brunch_points=leaf_points+branch_points
+    # Convert lists to NumPy arrays
+    leaf_points = np.array(leaf_points)
+    branch_points = np.array(branch_points)
+    leaf_and_brunch_points = np.array(leaf_and_brunch_points)
+    #凸包を求める3次元
+    # Removed unused variables 'branch_hull' and 'leaf_and_branch_hull'
+    
+    leaf_hull = ConvexHull(leaf_points)
+    branch_hull = ConvexHull(branch_points)
+    
+    leaf_and_branch_hull=ConvexHull(leaf_and_brunch_points)
+    
+    figure = plt.figure(figsize=(10, 10))
+    ax = figure.add_subplot(111, projection='3d')
+    #葉の凸包を描画
+    #凸包を描画
+    for simplex in leaf_hull.simplices:
+        simplex = np.append(simplex, simplex[0])
+        ax.plot(leaf_points[simplex, 0], leaf_points[simplex, 1], leaf_points[simplex, 2], 'g-')
+    for simplex in branch_hull.simplices:
+        simplex = np.append(simplex, simplex[0])
+        #ax.plot(branch_points[simplex, 0], branch_points[simplex, 1], branch_points[simplex, 2], 'b-')
+        
+    for simplex in leaf_and_branch_hull.simplices:
+        simplex = np.append(simplex, simplex[0])
+        #ax.plot(leaf_and_brunch_points[simplex, 0], leaf_and_brunch_points[simplex, 1], leaf_and_brunch_points[simplex, 2], 'g-')
+    for edge in DG.edges():
+        #numpy配列に変換
+        start_pos=np.array([DG.nodes[edge[0]]['node'].pos.x,DG.nodes[edge[0]]['node'].pos.y,DG.nodes[edge[0]]['node'].pos.z])
+        end_pos=np.array([DG.nodes[edge[1]]['node'].pos.x,DG.nodes[edge[1]]['node'].pos.y,DG.nodes[edge[1]]['node'].pos.z])
+        #幹の描画
+        ax.plot([start_pos[0],end_pos[0]],[start_pos[1],end_pos[1]],[start_pos[2],end_pos[2]],c="black")
+        
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    plt.show()
+def convex_hull_pca_leaf(DG,pca_points,num_cluster,labels_3d):
+    from scipy.spatial import ConvexHull
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d import Axes3D
+    import numpy as np
+    from matplotlib import cm
+    figure = plt.figure(figsize=(10, 10))
+    ax=figure.add_subplot(111, projection='3d')
+    colors = cm.rainbow(np.linspace(0, 1, num_cluster))
+    for i in range(num_cluster):
+        leaf_points=pca_points[labels_3d==i]
+        leaf_hull = ConvexHull(leaf_points)
+        for simplex in leaf_hull.simplices:
+            simplex = np.append(simplex, simplex[0])
+            ax.plot(leaf_points[simplex, 0], leaf_points[simplex, 1], c=colors[i])
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    plt.show()
+def colors(n):
+    ret = []
+    r = int("0x100000", 16)
+    g = int("0x001000", 16)
+    b = int("0x000010", 16)
+    for i in range(n):
+        r = (r + 8372226) % 16777216
+        g = (g + 8372226) % 16777216
+        b = (b + 8372226) % 16777216
+        ret.append("#" + hex(r)[2:] + hex(g)[2:] + hex(b)[2:])
+    return ret
+def branch_and_trunk_cluster(DG):
+    import matplotlib.pyplot as plt
+    from sklearn.cluster import KMeans
+    from sklearn.decomposition import PCA
+
+    
+    branch_and_trunk_points=[]
+    for node in DG.nodes():
+        if DG.nodes[node]['node'].attr==1 or DG.nodes[node]['node'].attr==0.5:
+            pos=DG.nodes[node]['node'].pos
+            np_pos=np.array([pos.x,pos.y,pos.z])
+            branch_and_trunk_points.append(np_pos)  
+    branch_and_trunk_points=np.array(branch_and_trunk_points)
+    n_clusters = 1
+    # Step 1: Apply K-means clustering directly to the original 3D data
+    kmeans_3d = KMeans(n_clusters=n_clusters)
+    labels_3d = kmeans_3d.fit_predict(branch_and_trunk_points)
+    pca_after_clustering = PCA(n_components=2)
+    point_cloud_2d_after_clustering = pca_after_clustering.fit_transform(branch_and_trunk_points)
+    
+    # Step 3: Visualize the results
+    fig = plt.figure(figsize=(12, 6))
+    
+    # 3D Plot of the original point cloud with clustering labels
+    ax1 = fig.add_subplot(121, projection='3d')
+    scatter3d_clustered = ax1.scatter(  branch_and_trunk_points[:, 0], branch_and_trunk_points[:, 1], branch_and_trunk_points[:, 2], c=labels_3d, cmap='viridis',s=20)
+    ax1.set_title("Original 3D Point Cloud with Clustering")
+    ax1.set_xlabel("X-axis")
+    ax1.set_ylabel("Y-axis")
+    ax1.set_zlabel("Z-axis")
+    
+    # PCA-reduced 2D plot after clustering
+    ax2 = fig.add_subplot(122)
+    scatter2d_clustered = ax2.scatter(point_cloud_2d_after_clustering[:, 0], point_cloud_2d_after_clustering[:, 1],
+                                    c=labels_3d, cmap='viridis', s=20)
+    print(f"labels_3d={labels_3d}")
+    print(f"len(labels_3d)={len(labels_3d)}")
+    ax2.set_title("PCA-Reduced 2D Representation After Clustering")
+    ax2.set_xlabel("Principal Component 1")
+    ax2.set_ylabel("Principal Component 2")
+    plt.colorbar(scatter3d_clustered, ax=ax1, label='Cluster')
+    plt.colorbar(scatter2d_clustered, ax=ax2, label='Cluster')
+    plt.tight_layout()
+    plt.show()
+
+
+def leaf_cluster(DG):
+    leaf_points=[]
+    for node in DG.nodes():
+        if DG.nodes[node]['node'].attr==0:
+            pos=DG.nodes[node]['node'].pos
+            np_pos=np.array([pos.x,pos.y,pos.z])
+            leaf_points.append(np_pos)
+    leaf_points=np.array(leaf_points)
+    n_clusters =5
+    # Step 1: Apply K-means clustering directly to the original 3D data
+    kmeans_3d = KMeans(n_clusters=n_clusters)
+    labels_3d = kmeans_3d.fit_predict(leaf_points)
+    pca_after_clustering = PCA(n_components=2)
+    point_cloud_2d_after_clustering = pca_after_clustering.fit_transform(leaf_points)
+    
+    # # Step 3: Visualize the results
+    # fig = plt.figure(figsize=(12, 6))
+
+    # # 3D Plot of the original point cloud with clustering labels
+    # ax1 = fig.add_subplot(121, projection='3d')
+    # scatter3d_clustered = ax1.scatter(  leaf_points[:, 0], leaf_points[:, 1], leaf_points[:, 2], c=labels_3d, cmap='viridis',s=20)
+    # ax1.set_title("Original 3D Point Cloud with Clustering")
+    # ax1.set_xlabel("X-axis")
+    # ax1.set_ylabel("Y-axis")
+    # ax1.set_zlabel("Z-axis")
+
+    # # PCA-reduced 2D plot after clustering
+    # ax2 = fig.add_subplot(122)
+    # scatter2d_clustered = ax2.scatter(point_cloud_2d_after_clustering[:, 0], point_cloud_2d_after_clustering[:, 1],
+    #                                 c=labels_3d, cmap='viridis', s=20)
+    # print(f"labels_3d={labels_3d}")
+    # print(f"len(labels_3d)={len(labels_3d)}")
+    # ax2.set_title("PCA-Reduced 2D Representation After Clustering")
+    # ax2.set_xlabel("Principal Component 1")
+    # ax2.set_ylabel("Principal Component 2")
+
+    # plt.colorbar(scatter3d_clustered, ax=ax1, label='Cluster')
+    # plt.colorbar(scatter2d_clustered, ax=ax2, label='Cluster')
+
+    # plt.tight_layout()
+    # plt.show()
+    
+    #葉の分類  
+    clustred_leaf_points=[[] for i in range(n_clusters)]
+    for i in range(len(leaf_points)):
+        clustred_leaf_points[labels_3d[i]].append(leaf_points[i])
+    return clustred_leaf_points,point_cloud_2d_after_clustering,labels_3d
+
+    
+
+
+def plot_graph_and_strmatrix(DG):
+    import matplotlib.pyplot as plt
+    import numpy as np
+    #nodeが持つ座標系（strmatrix）を使って、座標点＋座標軸を描画する
+    # Extract node positions
+    node_positions = {node: (DG.nodes[node]['node'].pos.x,
+                                DG.nodes[node]['node'].pos.y,
+                                DG.nodes[node]['node'].pos.z)
+                        for node in DG.nodes}
+    attr_positions = {node: DG.nodes[node]['node'].attr
+                        for node in DG.nodes}
+    edge_thickness = {(u, v): DG[u][v]['edge'].thickness
+                        for u, v in DG.edges()}
+    # Create a 3D plot
+    fig = plt.figure(figsize=(10,10), dpi=100)
+    ax = fig.add_subplot(111, projection='3d')
+    # Plot the nodes
+    for node, (x, y, z) in node_positions.items():
+        if attr_positions[node] == 0:
+            #葉
+            ax.scatter(x, y, z, c='green', marker='o',s=10)
+        else:
+            ax.scatter(x, y, z, c='brown', marker='o',s=10)
+            
+        #座標軸を描画（Strmatrixを使って）
+        #nodeの座標
+        pos=np.array([x,y,z])
+        #座標軸の長さ
+     
+        stmatrix=DG.nodes[node]["node"].strmatrix
+        #x軸
+        x_axis=stmatrix[0:3,0]
+        y_axis=stmatrix[0:3,1]
+        z_axis=stmatrix[0:3,2]
+        x_axis_length=1
+        y_axis_length=1
+        z_axis_length=1
+        x_axis_end=pos+x_axis_length*x_axis
+        y_axis_end=pos+y_axis_length*y_axis
+        z_axis_end=pos+z_axis_length*z_axis
+        ax.plot([pos[0],x_axis_end[0]],[pos[1],x_axis_end[1]],[pos[2],x_axis_end[2]],c="red")
+        ax.plot([pos[0],y_axis_end[0]],[pos[1],y_axis_end[1]],[pos[2],y_axis_end[2]],c="blue")
+        ax.plot([pos[0],z_axis_end[0]],[pos[1],z_axis_end[1]],[pos[2],z_axis_end[2]],c="green")
+        
+    # Plot the edges
+    for (u, v) in DG.edges():
+        x = [node_positions[u][0], node_positions[v][0]]
+        y = [node_positions[u][1], node_positions[v][1]]
+        z = [node_positions[u][2], node_positions[v][2]]
+        thickness = edge_thickness[(u, v)]
+        if attr_positions[u] == 1 and attr_positions[v] == 1:
+            ax.plot(x, y, z, c="#a65628", linewidth=thickness)
+        elif attr_positions[u] == 0.5 and attr_positions[v] == 0:
+            ax.plot(x, y, z, c="green", linewidth=thickness)
+        else:
+            ax.plot(x, y, z, c='#a65628', linewidth=thickness)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_xlim(-4, 4)
+    ax.set_ylim(-4, 4)
+    ax.view_init(elev=0, azim=90)
+    plt.gca().set_aspect('equal', adjustable='box')
+    plt.show()
 
 # 使用例
 if __name__ == "__main__":

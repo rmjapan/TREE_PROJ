@@ -1,6 +1,6 @@
 from sympy import O
 from utils import voxel2xyzfile
-from my_dataset.svddata_loader import TreeDataLoader
+# from my_dataset.svddata_loader import TreeDataLoader
 from visualize_func import visualize_with_timeout4voxel
 
 
@@ -31,6 +31,27 @@ def convert_npy_to_xyz(input_path, output_path):
         # npyファイルをxyzファイルに変換
         voxel2xyzfile(npy_file, xyz_filepath)
         print(f"Converted: {npy_file} -> {xyz_filepath}")
+def convert_npz_to_xyz(input_path, output_path):
+    """
+    npzファイルをxyzファイルに一括変換する関数
+    
+    Args:
+        input_path (str): npyファイルが格納されているディレクトリのパス
+        output_path (str): xyzファイルを出力するディレクトリのパス
+    """
+    # npyファイルを取得
+    print(f"input_path: {input_path}")
+    # 出力ディレクトリを作成
+    os.makedirs(output_path, exist_ok=True)
+
+    #ファイル名から拡張子を除いてxyzファイル名を作成
+    base_name = os.path.splitext(os.path.basename(input_path))[0]
+    xyz_filename = f"{base_name}.xyz"
+    xyz_filepath = os.path.join(output_path, xyz_filename)
+
+    # npzファイルをxyzファイルに変換
+    voxel2xyzfile(input_path, xyz_filepath)
+    print(f"Converted: {input_path} -> {xyz_filepath}")
 
 def overview(output_path):
 
@@ -98,7 +119,7 @@ def overview(output_path):
 if __name__ == "__main__":
     input_path = "/mnt/nas/rmjapan2000/tree/eval/sixteen_data_Resnet21/voxeldataset"
     output_path = "/mnt/nas/rmjapan2000/tree/eval/sixteen_data_Resnet21/yxzfiles"
-    "\\150.65.90.26\xielabNAS\rmjapan2000\tree\data_dir\train\model_cgvi_ver2\epochepoch=96-losstrain_loss=1.7216.ckpt"
+   
     # convert_npy_to_xyz(input_path, output_path)   
     
     output_path="/home/ryuichi/tree/TREE_PROJ/vc_overview"
