@@ -292,6 +292,9 @@ void Tree::readDataFromFile(QString filename)
     if(!file.open(QIODevice::ReadOnly))
         return;
     QTextStream ts(&file);
+    m_trunkVertexs.clear();
+    m_branchVertexs.clear();
+    m_leafVertexs.clear();
 
 
     while(!ts.atEnd())
@@ -299,10 +302,20 @@ void Tree::readDataFromFile(QString filename)
         QStringList line = ts.readLine().split(" ");
         line.removeAll("");
 
-        if(line.size() >= 3)
+        if(line.size() >= 6)
         {
 
             QVector3D vec(line[0].toDouble(),line[1].toDouble(),line[2].toDouble());
+            // 属性ラベルの追加
+            int r = line[3].toInt();
+            int g = line[4].toInt();
+            int b = line[5].toInt();
+            if (r == 139 && g == 69 && b == 19)//幹
+                m_trunkVertexs.push_back(vec);
+            else if (r == 205 && g == 133 && b == 63)//枝
+                m_branchVertexs.push_back(vec);
+            else if (r == 0 && g == 255 && b == 0)//葉
+                m_leafVertexs.push_back(vec);
 
             m_vertexs.push_back(vec);
 
@@ -340,6 +353,7 @@ void Tree::readDataFromFile(QString filename)
         m_vertexs[i].setY(m_vertexs[i].y()*radio);
         m_vertexs[i].setZ(m_vertexs[i].z()*radio);
     }
+    
 
     // 压缩点云数据，以提出重复点
     QList<int> removedIndex;    // 待删除点的索引
@@ -395,6 +409,22 @@ void Tree::readDataFromFile(QString filename)
               m_vertexs.removeAt(randID);
         }
     }
+    QSet<QVector3D> remainingPoints = QSet<QVector3D>::fromList(m_vertexs);
+
+    auto filterBySet = [&](QVector<QVector3D>& vec) {
+        QVector<QVector3D> filtered;
+        for (const QVector3D& pt : vec) {
+            if (remainingPoints.contains(pt)) {
+                filtered.push_back(pt);
+            }
+        }
+        vec = filtered;
+    };
+
+    filterBySet(m_trunkVertexs);
+    filterBySet(m_branchVertexs);
+    filterBySet(m_leafVertexs);
+
     lastCount = this->m_vertexs.size();
     qDebug()<<"  - 压缩后点云数量:"<<lastCount<<QString("(压缩率:%1\%)").arg(100*(float)lastCount/(float)prevCount);
 
@@ -418,8 +448,8 @@ void Tree::getBranchAreaFromPoints(double searchRadius)
 
     this->enterCurrentStageMode(_STAGE_2);
 
-    // 首先，从文件中读取回来原始点云
-    loadPointsFrom(this->m_vertexs,PATH_ORIGIN_POINTS);
+    // 首先，从文件中读取回来原始点云(変更:幹頂点を対象にする) )
+    loadPointsFrom(this->m_trunk_ver,PATH_ORIGIN_POINTS);
     qDebug()<<"  - 原始点数量:"<<this->m_vertexs.size();
 
     if(!this->m_vertexs.size())

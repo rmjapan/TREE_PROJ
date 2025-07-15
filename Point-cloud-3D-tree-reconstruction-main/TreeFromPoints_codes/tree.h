@@ -134,6 +134,10 @@ public:
     void enterCurrentStageMode(PROCESS_STAGE stage);
     // 点云  : 最初读入的三维点数据
     QVector<QVector3D> m_vertexs;
+    QVector<QVector3D> m_trunkVertexs;
+    QVector<QVector3D> m_branchVertexs;
+    QVector<QVector3D> m_leafVertexs;
+
 
     // 分割后的枝干区域和树叶区域
     QVector<QVector3D> m_curVertexes;  // 当前正在分析的点云数据
