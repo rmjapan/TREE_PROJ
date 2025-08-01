@@ -13,18 +13,21 @@ class SvsDataLoader(pl.LightningDataModule):
         data_dir: str = "/mnt/nas/rmjapan2000/tree/data_dir/train/svd_0.2",
         batch_size: int = 8,
         sub_dataset: bool = False,
+        sub_num: int = 24
     ):
         super().__init__()
         self.batch_size = batch_size
         self.data_dir= data_dir
         self.num_workers=4
         self.sub_dataset=sub_dataset
+        self.sub_num=sub_num
+        
     
     def setup(self,stage=None):
         if stage == "fit" or stage is None:
             full_dataset=SvsDataset(self.data_dir)
             if self.sub_dataset:
-                full_dataset=Subset(full_dataset,range(24))
+                full_dataset=Subset(full_dataset,range(self.sub_num))
                 
             total_length = len(full_dataset)
             train_length = int(total_length * 0.8)

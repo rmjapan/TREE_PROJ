@@ -449,7 +449,7 @@ void Tree::getBranchAreaFromPoints(double searchRadius)
     this->enterCurrentStageMode(_STAGE_2);
 
     // 首先，从文件中读取回来原始点云(変更:幹頂点を対象にする) )
-    loadPointsFrom(this->m_trunk_ver,PATH_ORIGIN_POINTS);
+    loadPointsFrom(this->m_trunk_vertexs,PATH_ORIGIN_POINTS);
     qDebug()<<"  - 原始点数量:"<<this->m_vertexs.size();
 
     if(!this->m_vertexs.size())
@@ -1488,4 +1488,24 @@ void Tree::drawGraphVBOWithOutColors(QOpenGLShaderProgram *&program, const QMatr
 
         glDrawArrays(GL_LINES,0,this->m_graphVBO_Vertex_Count);
     }
+}
+int main(int argc, char *argv[])
+{
+    QCoreApplication app(argc, argv);
+    
+    // ファイルパスを指定（実際のファイルパスに変更してください）
+    QString xyzFilePath = "/mnt/nas/rmjapan2000/tree/data_dir/train/svs_LDM/xyz/svs_1200.xyz";  // ここを実際のファイルパスに変更
+    
+    std::cout << "Testing readDataFromFile with: " << xyzFilePath.toStdString() << std::endl;
+    
+    // Treeクラスのインスタンスを作成
+    Tree tree;
+    
+    // データを読み込み
+    tree.readDataFromFile(xyzFilePath);
+    
+    // 結果を表示
+    std::cout << "Points loaded: " << tree.m_vertexs.size() << std::endl;
+    
+    return 0;
 }

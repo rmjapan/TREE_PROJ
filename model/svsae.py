@@ -366,6 +366,158 @@ class SVSEncoder_ver2(torch.nn.Module):
         return self.blocks(x)
     
 
+class Discriminator(nn.Module):
+    """3D Discriminator for VQGAN"""
+    def __init__(self, config: AutoencoderConfig):
+        super().__init__()
+        self.config = config
+        
+        # PatchGAN discriminator
+        self.blocks = nn.Sequential(
+            # 入力: 1 x 256 x 256 x 256
+            Conv3d(1, 64, kernel_size=4, stride=2, padding=1),  # 64 x 128 x 128 x 128
+            LeakyReLU(0.2, inplace=True),
+            
+            Conv3d(64, 128, kernel_size=4, stride=2, padding=1),  # 128 x 64 x 64 x 64
+            nn.BatchNorm3d(128),
+            LeakyReLU(0.2, inplace=True),
+            
+            Conv3d(128, 256, kernel_size=4, stride=2, padding=1),  # 256 x 32 x 32 x 32
+            nn.BatchNorm3d(256),
+            LeakyReLU(0.2, inplace=True),
+            
+            Conv3d(256, 512, kernel_size=4, stride=2, padding=1),  # 512 x 16 x 16 x 16
+            nn.BatchNorm3d(512),
+            LeakyReLU(0.2, inplace=True),
+            
+            Conv3d(512, 1, kernel_size=4, stride=1, padding=1),  # 1 x 15 x 15 x 15
+        )
+        
+    def forward(self, x):
+        return self.blocks(x)
+
+class VQGAN(ModelMixin, ConfigMixin, FromOriginalModelMixin):
+    """
+    VQGAN implementation with Vector Quantization
+    """
+    def __init__(self, config: Optional[AutoencoderConfig] = None, beta: float = 0.25):
+        super().__init__()
+        if config is None:
+            config = AutoencoderConfig()
+            
+        self.register_to_config(**config.__dict__)
+        self.beta = beta
+        
+        # Encoder
+        if config.encoder_type == "ver2":
+            print("ver2のencoderを使用します")
+            self.encoder = SVSEncoder_ver2(config)   
+        else:
+            print("ver1のencoderを使用します")
+            self.encoder = SVSEncoder(config)
+            
+        # Vector Quantizer
+        self.vector_quantizer = VectorQuantizer(config, beta)
+        
+        # Decoder
+        if config.decoder_type == "ver2":
+            print("ver2のdecoderを使用します")
+            self.decoder = SVSDecoder_ver2(config)
+        else:
+            print("ver1のdecoderを使用します")
+            self.decoder = SVSDecoder(config)
+            
+        # Discriminator
+        self.discriminator = Discriminator(config)
+        
+    def forward(self, x: torch.Tensor, return_dict: bool = True, generator: Optional[torch.Generator] = None):
+        # Encode
+        encoded = self.encoder(x)
+        
+        # Vector Quantization
+        vq_loss, quantized, encodings = self.vector_quantizer(encoded)
+        
+        # Decode
+        reconstructed = self.decoder(quantized, generator=generator)
+        
+        if return_dict:
+            return {
+                "reconstructed": reconstructed,
+                "vq_loss": vq_loss,
+                "quantized": quantized,
+                "encodings": encodings,
+                "encoded": encoded
+            }
+        return reconstructed, vq_loss, quantized, encodings
+    
+    def encode(self, x: torch.Tensor, return_dict: bool = True):
+        encoded = self.encoder(x)
+        vq_loss, quantized, encodings = self.vector_quantizer(encoded)
+        
+        if return_dict:
+            return {
+                "latent_dist": quantized,
+                "vq_loss": vq_loss,
+                "encodings": encodings
+            }
+        return quantized, vq_loss, encodings
+    
+    def decode(self, z: torch.Tensor, return_dict: bool = True, generator: Optional[torch.Generator] = None):
+        decoded = self.decoder(z, generator=generator)
+        
+        if not return_dict:
+            return (decoded,)
+        return DecoderOutput(sample=decoded)
+    
+    def discriminate(self, x: torch.Tensor):
+        """Discriminator forward pass"""
+        return self.discriminator(x)
+    
+    @classmethod
+    def from_pretrained(cls, pretrained_model_name_or_path: Union[str, os.PathLike], **kwargs):
+        config = AutoencoderConfig.from_pretrained(pretrained_model_name_or_path)
+        model = cls(config=config)
+        model_file = os.path.join(pretrained_model_name_or_path, "model.safetensors")
+        state_dict = load_file(model_file)
+        model.load_state_dict(state_dict)
+        return model
+    
+    def save_pretrained(
+        self,
+        save_directory: Union[str, os.PathLike],
+        is_main_process: bool = True,
+        save_function: Callable = None,
+        save_serialization: bool = True,
+        variant: Optional[str] = None,
+    ):
+        if os.path.isfile(save_directory):
+            raise ValueError(f"Provided path ({save_directory}) should be a directory, not a file")
+        os.makedirs(save_directory, exist_ok=True)
+        
+        # 設定ファイルの保存
+        self.save_config(save_directory)
+        
+        # モデルの保存
+        if save_serialization:
+            safetensors_filename = SAFETENSORS_WEIGHTS_NAME if not variant else f"{SAFETENSORS_WEIGHTS_NAME.split('.')[0]}.{variant}.safetensors"
+            weight_name = os.path.join(save_directory, safetensors_filename)
+            save_file(self.state_dict(), weight_name)
+        else:
+            weights_filename = WEIGHTS_NAME if not variant else f"{WEIGHTS_NAME.split('.')[0]}.{variant}.bin"
+            weight_name = os.path.join(save_directory, weights_filename)
+            if save_function is None:
+                torch.save(self.state_dict(), weight_name)
+            else:
+                save_function(self.state_dict(), weight_name)
+    
+    def save_config(self, save_directory: Union[str, os.PathLike]):
+        config_dict = deepcopy(self.config.__dict__)
+        config_dict = {k: v for k, v in config_dict.items() if not k.startswith('_')}
+        
+        config_path = os.path.join(save_directory, CONFIG_NAME)
+        with open(config_path, "w") as f:
+            json.dump(config_dict, f)
+
 class SVSAE(ModelMixin,ConfigMixin,FromOriginalModelMixin):
     """
     
@@ -483,7 +635,70 @@ class SVSAE(ModelMixin,ConfigMixin,FromOriginalModelMixin):
             json.dump(config_dict,f)
             
 
+class VQGANLoss(nn.Module):
+    """VQGAN Loss Functions"""
+    def __init__(self, config: AutoencoderConfig, perceptual_weight: float = 1.0, gan_weight: float = 1.0):
+        super().__init__()
+        self.config = config
+        self.perceptual_weight = perceptual_weight
+        self.gan_weight = gan_weight
         
+        # L1 Loss for reconstruction
+        self.l1_loss = nn.L1Loss()
+        
+        # MSE Loss for reconstruction (alternative)
+        self.mse_loss = nn.MSELoss()
+        
+        # BCE Loss for discriminator
+        self.bce_loss = nn.BCEWithLogitsLoss()
+    
+    def reconstruction_loss(self, real, fake):
+        """Reconstruction loss (L1 + MSE)"""
+        l1 = self.l1_loss(fake, real)
+        mse = self.mse_loss(fake, real)
+        return l1 + 0.1 * mse
+    
+    def generator_loss(self, disc_fake):
+        """Generator loss (fool the discriminator)"""
+        # We want discriminator to output 1 for fake images
+        real_labels = torch.ones_like(disc_fake)
+        return self.bce_loss(disc_fake, real_labels)
+    
+    def discriminator_loss(self, disc_real, disc_fake):
+        """Discriminator loss"""
+        real_labels = torch.ones_like(disc_real)
+        fake_labels = torch.zeros_like(disc_fake)
+        
+        real_loss = self.bce_loss(disc_real, real_labels)
+        fake_loss = self.bce_loss(disc_fake, fake_labels)
+        
+        return (real_loss + fake_loss) / 2
+    
+    def discriminator_loss_with_smoothing(self, disc_real, disc_fake, smoothing=0.1):
+        """Discriminator loss with label smoothing to prevent early convergence"""
+        # Label smoothing: real labels become 0.9, fake labels become 0.1
+        real_labels = torch.ones_like(disc_real) * (1.0 - smoothing)
+        fake_labels = torch.zeros_like(disc_fake) + smoothing
+        
+        real_loss = self.bce_loss(disc_real, real_labels)
+        fake_loss = self.bce_loss(disc_fake, fake_labels)
+        
+        return (real_loss + fake_loss) / 2
+    
+    def total_generator_loss(self, real, fake, vq_loss, disc_fake):
+        """Total generator loss"""
+        recon_loss = self.reconstruction_loss(real, fake)
+        gen_loss = self.generator_loss(disc_fake)
+        
+        total_loss = recon_loss + self.perceptual_weight * vq_loss + self.gan_weight * gen_loss
+        
+        return {
+            "total_loss": total_loss,
+            "reconstruction_loss": recon_loss,
+            "vq_loss": vq_loss,
+            "generator_loss": gen_loss
+        }
+
 def main():
     if torch.cuda.is_available():
         print("GPUが利用できます"   )
@@ -498,17 +713,86 @@ def main():
     print(f"xのshape:{x.shape}")
     output=model(x)
     print(f"outputのshape:{output.shape}")
+
+
+def test_vqgan():
+    """VQGAN test function"""
+    if torch.cuda.is_available():
+        print("GPUが利用できます")
+        device = "cuda"
+    else:
+        print("GPUが利用できません")
+        device = "cpu"
     
+    # Create config
+    config = AutoencoderConfig(device=device, encoder_type="ver2", decoder_type="ver2")
+    
+    # Create VQGAN model
+    vqgan = VQGAN(config, beta=0.25).to(device)
+    
+    # Create loss function
+    vqgan_loss = VQGANLoss(config, perceptual_weight=1.0, gan_weight=0.5)
+    
+    # Test input
+    batch_size = 1
+    input_tensor = torch.randn(batch_size, 1, 256, 256, 256).to(device)
+    
+    print(f"Input shape: {input_tensor.shape}")
+    
+    # Forward pass
+    with torch.no_grad():
+        results = vqgan(input_tensor, return_dict=True)
+        
+        print(f"Reconstructed shape: {results['reconstructed'].shape}")
+        print(f"VQ Loss: {results['vq_loss'].item():.4f}")
+        print(f"Quantized shape: {results['quantized'].shape}")
+        
+        # Test discriminator
+        disc_real = vqgan.discriminate(input_tensor)
+        disc_fake = vqgan.discriminate(results['reconstructed'])
+        
+        print(f"Discriminator real output shape: {disc_real.shape}")
+        print(f"Discriminator fake output shape: {disc_fake.shape}")
+        
+        # Test losses
+        loss_dict = vqgan_loss.total_generator_loss(
+            input_tensor, 
+            results['reconstructed'], 
+            results['vq_loss'], 
+            disc_fake
+        )
+        
+        print("Loss breakdown:")
+        for key, value in loss_dict.items():
+            print(f"  {key}: {value.item():.4f}")
+        
+        disc_loss = vqgan_loss.discriminator_loss(disc_real, disc_fake)
+        print(f"  discriminator_loss: {disc_loss.item():.4f}")
+    
+    print("VQGAN test completed successfully!")
         
 
 if __name__ == "__main__":
     # main()
+    # 既存のテストコード
     config=AutoencoderConfig(device="cuda")
     encoder=SVSEncoder_ver2(config).to(config.device)
     decoder=SVSDecoder_ver2(config).to(config.device)
-    vq=VectorQuantizer(config,0.9)
+    vq=VectorQuantizer(config,0.9).to(config.device)  # VectorQuantizerもGPUに移動
     input=torch.randn((1,1,256,256,256)).to(config.device)
     en_out=encoder(input)
     loss,vq_output,emb=vq(en_out)
     de_output=decoder(vq_output)
+    
+    print(f"Encoder output shape: {en_out.shape}")
+    print(f"VQ loss: {loss.item():.4f}")
+    print(f"VQ output shape: {vq_output.shape}")
+    print(f"Decoder output shape: {de_output.shape}")
+    
+    print("\n" + "="*50)
+    print("VQGAN Test")
+    print("="*50)
+    
+    # VQGANのテスト
+    test_vqgan()
 

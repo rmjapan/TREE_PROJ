@@ -5,11 +5,15 @@ from train_vqvae import VQVAE
 from visualize_func import visualize_with_timeout4voxel
 import torch
 
-config=AutoencoderConfig()
-model = VQVAE(config)
+config=AutoencoderConfig(latent_channels=2)
+model = VQVAE(config).eval()
 
 ckpt = "/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=03-train_total_loss=0.0030.ckpt"
 # ckpt = "/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=00-train_total_loss=0.0252.ckpt"
+ckpt="/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=00-train_total_loss=0.0373.ckpt"
+ckpt="/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=01-train_total_loss=0.0036.ckpt"
+ckpt="/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=08-train_total_loss=0.0030.ckpt"#変なものがはえる
+ckpt="/mnt/nas/rmjapan2000/tree/data_dir/train/model_vqvae/epoch=07-train_total_loss=0.0030.ckpt"
 model.load_state_dict(torch.load(ckpt, map_location=torch.device("cuda"))["state_dict"])
 dataload=SvsDataLoader(batch_size=1,sub_dataset=False)
 dataload.setup()

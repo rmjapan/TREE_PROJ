@@ -27,7 +27,7 @@ def make_davinch_tree(DG, Edge):
                     edge=DG.edges[same_edge]["edge"].attr=1
                 else:
                     edge=DG.edges[same_edge]["edge"].attr=0.5
-            thickness=thickness*0.2
+            thickness=thickness*0.4
             return thickness
 
         if len(adjacent_edge_list) > 1:  # 分岐がある場合

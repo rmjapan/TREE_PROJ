@@ -306,7 +306,7 @@ def create_voxel_data(DG, H=32, W=32, D=32,trunk_thick=3, branch_thick=2, leaf_t
         if DG.nodes[edge[0]]['node'].dammy_root_flag==False:
             # draw_sphere(start_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
             draw_sphere(end_pos, radius, voxel_positions, voxel_data, value,x_coords,y_coords,z_coords)
-
+    
     
       
         #エッジのベクトルを計算
