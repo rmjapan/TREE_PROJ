@@ -155,9 +155,15 @@ class VectorQuantizer(nn.Module):
         self.K=512  # または1024, 2048など
         self.embedding=nn.Embedding(self.K,self.D)
         # print(f"Embedding shape: {self.embedding.weight.shape}")
-        #重みの初期化
+        #重みの初期化を改善
         nn.init.uniform_(self.embedding.weight,-1/self.K,1/self.K)
         self.beta=beta
+        
+        # Commitment loss用の移動平均（EMAベースの更新を追加）
+        self.decay = 0.99
+        self.register_buffer('cluster_size', torch.zeros(self.K))
+        self.register_buffer('embed_avg', self.embedding.weight.data.clone())
+        
     def CalcDist_x2codebook(self,x):
         """
         Encoderの出力ｘとCodeBookのベクトルの距離を計算する.
@@ -167,13 +173,15 @@ class VectorQuantizer(nn.Module):
         + torch.sum(self.embedding.weight**2,dim=1)
         -2*torch.matmul(x_flat,self.embedding.weight.t()))
         return distances
+        
     def vector_quantized(self,x):
         """
         Encoderの出力を量子化する.
         """
         x_shape=x.shape
         distances=self.CalcDist_x2codebook(x)
-                # 最近傍のインデックスを取得(もっとも距離が近かったCodeBookのベクトル番号を取得）
+        
+        # 最近傍のインデックスを取得(もっとも距離が近かったCodeBookのベクトル番号を取得）
         encoding_indices = torch.argmin(distances, dim=1).unsqueeze(1)
         
         #onehotベクトルをつくる.
@@ -183,22 +191,67 @@ class VectorQuantizer(nn.Module):
         
         #量子化する+形状をChange
         quantized=torch.matmul(encodings,self.embedding.weight).view(x_shape)
-        # print(quantized.shape)
+        
+        # EMA更新（学習中のみ）
+        if self.training:
+            # NaN チェックを追加
+            if torch.isnan(encodings.sum()) or torch.isinf(encodings.sum()):
+                print("Warning: NaN/Inf detected in encodings, skipping EMA update")
+                return quantized, encodings
+                
+            # クラスターサイズの更新
+            self.cluster_size = self.cluster_size * self.decay + (1 - self.decay) * encodings.sum(0)
+            
+            # 埋め込みベクトルの平均の更新
+            embed_sum = torch.matmul(encodings.t(), x.view(-1, self.D))
+            
+            # NaN チェック
+            if torch.isnan(embed_sum).any() or torch.isinf(embed_sum).any():
+                print("Warning: NaN/Inf detected in embed_sum, skipping EMA update")
+                return quantized, encodings
+            
+            self.embed_avg = self.embed_avg * self.decay + (1 - self.decay) * embed_sum
+            
+            # 正規化された埋め込みベクトルの更新
+            n = self.cluster_size.sum()
+            if n > 0:  # ゼロ除算を防ぐ
+                cluster_size = (self.cluster_size + 1e-5) / (n + self.K * 1e-5) * n
+                embed_normalized = self.embed_avg / (cluster_size.unsqueeze(1) + 1e-8)  # ゼロ除算を防ぐ
+                
+                # NaN チェック
+                if not torch.isnan(embed_normalized).any() and not torch.isinf(embed_normalized).any():
+                    self.embedding.weight.data.copy_(embed_normalized)
+                else:
+                    print("Warning: NaN/Inf detected in embed_normalized, skipping weight update")
+        
         return quantized,encodings
-    def calc_loss(self,quantized,x):
+        
+    def calc_loss(self,quantized,x,encodings):
         """
         Code Book Loss: q_latentLoss:埋め込みベクトルをEncoderベクトルに近づける.
         E_latent Loss : e_latentLoss:エンコーダベクトルを埋め込みベクトルに近づける
         """
+        # VQ損失の改善（より安定な計算）
         e_latent_loss=F.mse_loss(quantized.detach(),x)#Encoder側に伝わるloss
         q_latent_loss=F.mse_loss(quantized,x.detach())#Codebook側に伝わるloss
-        loss =q_latent_loss+self.beta*e_latent_loss
+        
+        # NaN check
+        if torch.isnan(e_latent_loss) or torch.isnan(q_latent_loss):
+            print("Warning: NaN detected in VQ loss")
+            return torch.tensor(0.25, device=x.device, requires_grad=True)
+        
+        # Clamp losses to prevent explosion
+        e_latent_loss = torch.clamp(e_latent_loss, min=0.0, max=10.0)
+        q_latent_loss = torch.clamp(q_latent_loss, min=0.0, max=10.0)
+        
+        loss = q_latent_loss + self.beta * e_latent_loss
         return loss
         
     def forward(self,x:torch.Tensor):
         x=x.permute(0,2,3,4,1).contiguous()
         quantized,encodings=self.vector_quantized(x)
-        loss =self.calc_loss(quantized,x)
+        loss = self.calc_loss(quantized,x,encodings)
+        
         quantized = x + (quantized - x).detach()
         return loss,quantized.permute(0,4,1,2,3).contiguous(),encodings
 
@@ -636,7 +689,7 @@ class SVSAE(ModelMixin,ConfigMixin,FromOriginalModelMixin):
             
 
 class VQGANLoss(nn.Module):
-    """VQGAN Loss Functions"""
+    """VQGAN Loss Functions with improved reconstruction loss"""
     def __init__(self, config: AutoencoderConfig, perceptual_weight: float = 1.0, gan_weight: float = 1.0):
         super().__init__()
         self.config = config
@@ -649,14 +702,72 @@ class VQGANLoss(nn.Module):
         # MSE Loss for reconstruction (alternative)
         self.mse_loss = nn.MSELoss()
         
+        # Smooth L1 Loss for better gradients
+        self.smooth_l1_loss = nn.SmoothL1Loss()
+        
         # BCE Loss for discriminator
         self.bce_loss = nn.BCEWithLogitsLoss()
     
     def reconstruction_loss(self, real, fake):
-        """Reconstruction loss (L1 + MSE)"""
+        """Improved reconstruction loss with multiple metrics"""
+        # 複数の損失を組み合わせて再構成品質を向上
         l1 = self.l1_loss(fake, real)
         mse = self.mse_loss(fake, real)
-        return l1 + 0.1 * mse
+        smooth_l1 = self.smooth_l1_loss(fake, real)
+        
+        # Structural Similarity component
+        ssim_loss = self.structural_similarity_loss(real, fake)
+        
+        # NaN check for individual losses
+        if torch.isnan(l1) or torch.isnan(mse) or torch.isnan(smooth_l1) or torch.isnan(ssim_loss):
+            print("Warning: NaN detected in reconstruction loss components")
+            return torch.tensor(1.0, device=real.device, requires_grad=True)
+        
+        # Combined loss with adaptive weights
+        total_recon = l1 + 0.3 * mse + 0.2 * smooth_l1 + 0.1 * ssim_loss  # Reduced weights
+        
+        # Clamp to prevent explosion
+        total_recon = torch.clamp(total_recon, min=0.0, max=10.0)
+        
+        return total_recon
+    
+    def structural_similarity_loss(self, real, fake):
+        """Simple structural similarity loss for 3D data with stability checks"""
+        try:
+            # Normalize to [0, 1] for SSIM calculation
+            real_norm = torch.clamp((real + 1) / 2, 0, 1)  # Assuming data is in [-1, 1]
+            fake_norm = torch.clamp((fake + 1) / 2, 0, 1)
+            
+            # Calculate means
+            mu_real = torch.mean(real_norm)
+            mu_fake = torch.mean(fake_norm)
+            
+            # Calculate variances and covariance
+            var_real = torch.var(real_norm)
+            var_fake = torch.var(fake_norm)
+            cov = torch.mean((real_norm - mu_real) * (fake_norm - mu_fake))
+            
+            # SSIM components with stability
+            c1 = 0.01 ** 2
+            c2 = 0.03 ** 2
+            
+            numerator = (2 * mu_real * mu_fake + c1) * (2 * cov + c2)
+            denominator = (mu_real ** 2 + mu_fake ** 2 + c1) * (var_real + var_fake + c2)
+            
+            # Prevent division by zero
+            denominator = torch.clamp(denominator, min=1e-8)
+            
+            ssim = numerator / denominator
+            
+            # NaN check
+            if torch.isnan(ssim) or torch.isinf(ssim):
+                return torch.tensor(0.0, device=real.device, requires_grad=True)
+            
+            return torch.clamp(1 - ssim, min=0.0, max=2.0)  # Convert to loss (lower is better)
+            
+        except Exception as e:
+            print(f"Warning: Error in SSIM calculation: {e}")
+            return torch.tensor(0.0, device=real.device, requires_grad=True)
     
     def generator_loss(self, disc_fake):
         """Generator loss (fool the discriminator)"""

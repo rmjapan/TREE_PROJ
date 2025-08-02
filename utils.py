@@ -323,9 +323,9 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
                     )
         
 
-        print(f"voxel.shape: {voxel.shape}")
+        # print(f"voxel.shape: {voxel.shape}")
         voxel=voxel.reshape(voxel.shape[0], voxel.shape[0], voxel.shape[0])  # 3次元配列に変形
-        print(f"voxel.shape after reshape: {voxel.shape}")
+        # print(f"voxel.shape after reshape: {voxel.shape}")
         if hasattr(voxel, "detach"):
             voxel = voxel.detach().cpu().numpy()
         
@@ -338,7 +338,7 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
 
         # 出力ディレクトリの作成
         os.makedirs(os.path.dirname(os.path.abspath(filename)), exist_ok=True)
-        print(f"file path: {os.path.dirname(os.path.abspath(filename))}")
+        # print(f"file path: {os.path.dirname(os.path.abspath(filename))}")
         # 空でないボクセルのみを抽出
         valid_mask = (voxel != -1.0)  # 空白でないボクセルのマスク
         valid_indices = np.where(valid_mask)
@@ -362,7 +362,7 @@ def voxel2xyzfile(voxel: Union[np.ndarray, torch.Tensor, str], filename: str = "
                 # f.write(f"{k} {i} {j} {r} {g} {b}\n")
                 # f.write(f"{i} {k} {j} {r} {g} {b}\n")
                 f.write(f"{k} {j} {i} {r} {g} {b}\n")
-        print(f"Voxel data successfully written to {filename}")
+        # print(f"Voxel data successfully written to {filename}")
 
     except Exception as e:
         raise IOError(f"Failed to process voxel data: {str(e)}")

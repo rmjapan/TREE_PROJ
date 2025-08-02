@@ -41,7 +41,7 @@ def initialize_voxel_data(DG, H=32, W=32, D=32):
         x_center = dammy_root_node.pos.x
         y_ground = dammy_root_node.pos.y  # Y軸は地面として扱う
         z_center = dammy_root_node.pos.z
-        print(f"Center set to dammy_root_node: X={x_center}, Y_ground={y_ground}, Z={z_center}")
+        # print(f"Center set to dammy_root_node: X={x_center}, Y_ground={y_ground}, Z={z_center}")
         
         # dammy_root_nodeから各方向への最大距離を計算
         x_vals = [DG.nodes[node]['node'].pos.x for node in DG.nodes()]
@@ -54,7 +54,7 @@ def initialize_voxel_data(DG, H=32, W=32, D=32):
         z_min_dist = z_center - min(z_vals)
         z_max_dist = max(z_vals) - z_center
         
-        print(f"x_min_dist: {x_min_dist}, x_max_dist: {x_max_dist}, y_max_dist: {y_max_dist}, z_min_dist: {z_min_dist}, z_max_dist: {z_max_dist}")
+        # print(f"x_min_dist: {x_min_dist}, x_max_dist: {x_max_dist}, y_max_dist: {y_max_dist}, z_min_dist: {z_min_dist}, z_max_dist: {z_max_dist}")
         
         # 立方体にするため最大距離を採用
         max_distance = max(x_min_dist, x_max_dist, y_max_dist, z_min_dist, z_max_dist)
@@ -86,11 +86,13 @@ def initialize_voxel_data(DG, H=32, W=32, D=32):
     
     # 共通の処理
     voxel_size = voxel_scale / H
-    print(f"voxel_scale: {voxel_scale}, voxel_size: {voxel_size}")
+    # print(f"voxel_scale: {voxel_scale}, voxel_size: {voxel_size}")
     
     # X,Z軸は中心配置、Y軸は地面から開始
     voxel_xmin = x_center_final - voxel_scale / 2
-    voxel_ymin = y_start-10  # Y軸は地面から開始
+    # voxel_ymin = y_start-10  # Y軸は地面から開
+    # print(f"ystart: {y_start}\n\n")
+    voxel_ymin = y_start- 14
     voxel_zmin = z_center_final - voxel_scale / 2
     
     # 座標軸の値を計算
@@ -235,7 +237,7 @@ def align_DG_to_Y(DG):
     # print(f"{axis_names[idx]}に沿った幹")
     trunk_vector = trunk_vectors[idx]
 
-    print(f"trunk_vector: {trunk_vector}")
+    # print(f"trunk_vector: {trunk_vector}")
     
     if trunk_vector[1] < 0:
         trunk_vector = -trunk_vector

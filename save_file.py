@@ -2,21 +2,24 @@ from scipy.sparse import csr_matrix, save_npz
 import os
 import numpy as np
 
-def save_npzForm(voxel_data,path,index):
+def save_npzForm(voxel_data,path,index,treecategory):
     """
     -1,0,0.5,1の値->0,1,1.5,2に変換して疎行列として保存
     """
     #deepcopyする
     voxel_2d_flat=voxel_data.copy().reshape(voxel_data.shape[0],-1)
-    print(f"シフト開始")
+    # print(f"シフト開始")
     voxel_2d_flat[voxel_2d_flat==1]=2
     voxel_2d_flat[voxel_2d_flat==0.5]=1.5
     voxel_2d_flat[voxel_2d_flat==0]=1
     voxel_2d_flat[voxel_2d_flat==-1]=0
-    print(f"シフト完了")
+  
+    
     voxel_2d_flat_sparse=csr_matrix(voxel_2d_flat)
-    save_path=path+f"/svs_{index}.npz"
+    save_path=path+f"/{treecategory}_{index}.npz"
+    print(f"Saving sparse matrix to {save_path}")
     save_npz(save_path,voxel_2d_flat_sparse)
+    return save_path
     
 import os
 import shutil

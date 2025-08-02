@@ -40,7 +40,7 @@ def convert_npz_to_xyz(input_path, output_path):
         output_path (str): xyzファイルを出力するディレクトリのパス
     """
     # npyファイルを取得
-    print(f"input_path: {input_path}")
+    # print(f"input_path: {input_path}")
     # 出力ディレクトリを作成
     os.makedirs(output_path, exist_ok=True)
 
@@ -51,7 +51,7 @@ def convert_npz_to_xyz(input_path, output_path):
 
     # npzファイルをxyzファイルに変換
     voxel2xyzfile(input_path, xyz_filepath)
-    print(f"Converted: {input_path} -> {xyz_filepath}")
+    # print(f"Converted: {input_path} -> {xyz_filepath}")
 
 def overview(output_path):
 
